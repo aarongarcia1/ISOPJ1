@@ -12,7 +12,7 @@ Este repositorio contiene el material del curso de Machine Learning desarrollado
 
 Este repositorio está preparado para ser publicado con GitHub Pages.  
 Puedes ver la versión web pública en:  
-https://mireiaconsarnau.github.io/machine_learning/
+[https://.github.io/machine_learning/](https://github.com/aarongarcia1/ISOPJ1/edit/main/README.md)
 
 ## Licencia
 
@@ -21,5 +21,5 @@ El contenido está bajo licencia [Creative Commons BY-NC-SA 3.0 ES](LICENSE.md).
 
 ---
 
-© 2025 Mireia Consarnau
+© 2025 Aaron Garcia
 
