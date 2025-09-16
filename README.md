@@ -12,7 +12,7 @@ Este repositorio contiene el material del curso de Machine Learning desarrollado
 
 Este repositorio está preparado para ser publicado con GitHub Pages.  
 Puedes ver la versión web pública en:  
-https://github.com/aarongarcia1/ISOPJ1
+https://github.com/aarongarcia1/ISOPJ1/
 
 ## Licencia
 
