@@ -15,7 +15,7 @@ El contenido está bajo licencia [Creative Commons BY-NC-SA 3.0 ES](LICENSE.md).
 
 ## Contenido del curso
 
-### [SP1. Sprint 1: Instal·lació i Configuració Inicial](sp1/imatges/img.md)  
+### [SP1. Sprint 1: Instal·lació i Configuració Inicial](sp1/sp1.md)  
 ### [SP2. Sprint 2: Instal·lació, Configuració de Programari de Base i Gestió de Fitxers](sp2/sp2.md)  
 ### [SP3. Sprint 3: Administració de Dominis i Seguretat](sp3/sp3.md)  
 ### [SP4. Sprint 4: Configuració del Programari de Base i Sistemes d’Emmagatzematge en Ubuntu](sp4/sp4.md)  
