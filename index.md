@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Curso de Machine Learning"
+title: "Curs d'implementació de sistemes operatius"
 ---
 
 Este repositorio contiene el material del curso de Machine Learning desarrollado por Mireia Consarnau.
