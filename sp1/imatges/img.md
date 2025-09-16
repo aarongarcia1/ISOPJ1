@@ -1,2 +1,2 @@
-![Ies de l'Ebre](imatges/ies.jpg)
+![Ies de l'Ebre](ies.jpg)
 
