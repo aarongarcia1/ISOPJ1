@@ -24,6 +24,9 @@ Quan ja haguesem passat les particions creem l'usuari i contrasenya que utilitza
 
 <img width="806" height="496" alt="image" src="https://github.com/user-attachments/assets/da6be433-b5ff-4b48-978b-251c611bad63" />
 
+Guest Additions
+
+<img width="885" height="435" alt="image" src="https://github.com/user-attachments/assets/2b645804-df63-4421-bd16-e6fc384754b6" />
 
 
 ## Llicenciament
