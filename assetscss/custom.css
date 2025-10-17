@@ -1,20 +1,58 @@
 /* assets/css/custom.css */
 
 body {
-  background-color: #f7f9fc; /* Un fondo azulado muy claro */
+    /* Fondo negro base */
+    background-color: #000;
+    color: #e0e0e0; /* Texto claro para contrastar */
+    font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace; /* Fuente estilo consola */
+
+    /* Usar la imagen de FSociety como fondo */
+    background-image: url("{{ '/assetscss/imatges/fsociety.png' | relative_url }}");
+    background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+    background-position: center center; /* Centra la imagen en la pantalla */
+    background-repeat: no-repeat; /* Importante: no queremos que se repita */
+    background-attachment: fixed; /* Mantiene la imagen fija al hacer scroll */
 }
 
-/* Cambiar el color de los enlaces */
+/* Ajustes para el contenedor principal para que el texto sea legible sobre el fondo */
+.wrapper {
+    /* Hacemos el fondo un poco más opaco para que el texto se lea bien */
+    background-color: rgba(0, 0, 0, 0.85); /* Fondo muy oscuro, casi opaco */
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); /* Sombra roja brillante, estilo FSociety */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Color para los títulos dentro del wrapper, a juego con el estilo FSociety */
+h1, h2, h3, h4, h5, h6 {
+    color: #FF0000; /* Rojo vibrante */
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.8); /* Pequeña sombra de texto roja */
+}
+
+/* Color para los enlaces */
 a {
-  color: #e84545; /* Un tono de rojo */
+    color: #FF4444; /* Un rojo más claro para enlaces */
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 a:hover {
-  color: #903749; /* Un rojo más oscuro al pasar el ratón */
+    color: #FF8888; /* Rojo más brillante al pasar el ratón */
+    text-decoration: underline;
 }
 
-/* Hacer el título principal más grande y con otro color */
-.post-title {
-    font-size: 42px !important;
-    color: #2b2e4a !important;
+/* Estilo para el pie de página (footer) */
+.site-footer {
+    background-color: rgba(0, 0, 0, 0.9); /* Fondo casi opaco para el footer */
+    color: #aaa;
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid rgba(255, 0, 0, 0.3); /* Línea roja sutil */
+    font-size: 0.9em;
+}
+
+.site-footer a {
+    color: #FF4444;
 }
