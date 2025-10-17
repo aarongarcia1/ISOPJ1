@@ -5,7 +5,7 @@ sass:
 
 plugins:
   - jekyll-seo-tag
-
+  
 # Puedes añadir un título y descripción para que aparezcan en la cabecera
 title: Curs d'implementació de sistemes operatius
 description: Material del curs de Machine Learning desenvolupat per Mireia Consarnau.
