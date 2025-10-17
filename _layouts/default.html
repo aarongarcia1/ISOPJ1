@@ -1,27 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{{ page.title }}</title>
-  <link rel="stylesheet" href="/machine_learning/assets/css/custom.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ Aaron Garcia }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 <body>
-
-  <h1>{{ page.title }}</h1>
-
-  {{ content }}
-
-  <footer class="license">
-    © 2025 Aaron Garcia  
-    <br/>
-    Este curso se distribuye bajo la licencia
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/es/">Creative Commons BY-NC-SA 4.0 ES</a>
-    <br/>
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/es/">
-      <img src="https://i.creativecommons.org/l/by-nc-sa/3.0/es/88x31.png" alt="Licencia CC BY-NC-SA 4.0 ES" />
-    </a>
-  </footer>
-
+    <div class="container">
+        {{ content }}
+    </div>
 </body>
 </html>
