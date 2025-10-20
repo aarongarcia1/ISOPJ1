@@ -1,17 +1,75 @@
-/* assets/css/custom.css */
+/* assets/css/style.css */
 
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo estilo hacker */
 body {
-    /* Fondo negro base */
-    background-color: #000;
-    color: #e0e0e0; /* Texto claro para contrastar */
-    font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace; /* Fuente estilo consola */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Courier New', Courier, monospace;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #0f0;
+    overflow: hidden;
+}
 
-    /* --- ESTA ES LA LÍNEA CORREGIDA --- */
-    /* Usar tu imagen de FSociety como fondo con la ruta correcta */
-    background-image: url("{{ '/assets/imatges/fsociety.png' | relative_url }}");
-    
-    background-size: cover; /* Asegura que la imagen cubra todo el fondo */
-    background-position: center center; /* Centra la imagen en la pantalla */
-    background-repeat: no-repeat; /* Importante: no queremos que se repita */
-    background-attachment: fixed; /* Mantiene la imagen fija al hacer scroll */
+/* Animación de código estilo Matrix */
+.code-rain {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    color: #0f0;
+    font-size: 16px;
+    line-height: 1.2;
+    white-space: pre;
+    pointer-events: none;
+    overflow: hidden;
+    animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Partículas abstractas flotantes */
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #0f0;
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: float 10s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh) translateX(0); opacity: 0.2; }
+    50% { opacity: 0.5; }
+    100% { transform: translateY(-10vh) translateX(50px); opacity: 0; }
+}
+
+/* Contenedor de contenido central */
+.content {
+    z-index: 10;
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 3rem;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
+}
+
+.content p {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    text-shadow: 0 0 5px #0f0;
 }
