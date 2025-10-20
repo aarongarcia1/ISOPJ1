@@ -39,6 +39,12 @@ Per configurar la xarxa el primer que farem serà anar  a la xarxa, per crear un
 Farem un ping a 8.8.8.8, per comprovar la connectivitat
 <img width="898" height="394" alt="Captura de pantalla de 2025-10-07 13-44-05" src="https://github.com/user-attachments/assets/93836d20-6f92-4709-b5ec-ee0af2e9d847" />
 
+Seguidament anirem a /etc/netplan/ i l'archiu .yaml, l'utilitzarem per configurar la red, farem un *netplan apply* per a aplicar la configuració
+
+<img width="792" height="333" alt="Captura de pantalla de 2025-10-07 13-52-10" src="https://github.com/user-attachments/assets/52eefb4f-f552-494e-ae90-7c94b4ef58a8" />
+
+Finalment farem un ping a 8.8.8.8 per veure la connectivitat que te
+<img width="895" height="362" alt="Captura de pantalla de 2025-10-07 13-52-24" src="https://github.com/user-attachments/assets/15c8f693-37b2-4ef6-96cf-60f08116a24c" />
 
 ## Comandes generals i instal·lacions
 Començarem fent un apt-cache policy, per veure les versions que tenim a la nostra màquina
