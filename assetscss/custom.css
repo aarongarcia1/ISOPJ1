@@ -1,75 +1,50 @@
-/* assets/css/style.css */
+/* --- ESTILOS PARA EL CONTENIDO DEL CURSO (AÑADIR AL FINAL) --- */
 
-/* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Contenedor principal para el contenido del curso */
+#main-content {
+    z-index: 10; /* Asegura que esté por encima del fondo */
+    max-width: 800px;
+    width: 90%;
+    padding: 2rem;
+    background-color: rgba(10, 25, 47, 0.85); /* Fondo oscuro semitransparente */
+    border: 1px solid #00ff00;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+    backdrop-filter: blur(5px); /* Efecto de cristal esmerilado */
 }
 
-/* Fondo estilo hacker */
-body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Courier New', Courier, monospace;
-    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    color: #0f0;
-    overflow: hidden;
+/* Estilos para los títulos y texto dentro del contenedor */
+#main-content h1,
+#main-content h2 {
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00;
+    border-bottom: 1px solid rgba(0, 255, 0, 0.5);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
-/* Animación de código estilo Matrix */
-.code-rain {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    color: #0f0;
-    font-size: 16px;
-    line-height: 1.2;
-    white-space: pre;
-    pointer-events: none;
-    overflow: hidden;
-    animation: fadeIn 2s ease forwards;
+#main-content p,
+#main-content ul {
+    color: #c3c3c3; /* Un gris claro para buena legibilidad */
+    font-size: 1.1rem;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Partículas abstractas flotantes */
-.particle {
-    position: absolute;
-    width: 3px;
-    height: 3px;
-    background: #0f0;
-    border-radius: 50%;
-    opacity: 0.2;
-    animation: float 10s linear infinite;
-}
-
-@keyframes float {
-    0% { transform: translateY(100vh) translateX(0); opacity: 0.2; }
-    50% { opacity: 0.5; }
-    100% { transform: translateY(-10vh) translateX(50px); opacity: 0; }
-}
-
-/* Contenedor de contenido central */
-.content {
-    z-index: 10;
+/* Estilo para los enlaces de los Sprints (botones neón) */
+#main-content h3 a {
+    display: block;
+    margin: 0.8rem 0;
+    padding: 1rem;
+    background-color: transparent;
+    color: #00ff00;
+    border: 2px solid #00ff00;
+    border-radius: 5px;
+    text-decoration: none;
     text-align: center;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
 }
 
-.content h1 {
-    font-size: 3rem;
-    letter-spacing: 3px;
-    text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
-}
-
-.content p {
-    margin-top: 10px;
-    font-size: 1.2rem;
-    text-shadow: 0 0 5px #0f0;
+#main-content h3 a:hover {
+    background-color: rgba(0, 255, 0, 0.2);
+    box-shadow: 0 0 15px #00ff00;
 }
