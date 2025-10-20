@@ -72,6 +72,34 @@ Primer cal modificar la configuració de **VirtualBox**, ja que requereix alguns
 3. Canviar el tipus de sistema a **Windows** i ajustar la configuració de pantalla per evitar problemes.
 
 ## Punts de restauració
+
+Primerament farem un **apt install timeshift**, aquesta eina s'utilitza per restaurar el sistema si una actualització la trenca
+<img width="1170" height="321" alt="Captura de pantalla de 2025-10-07 12-50-18" src="https://github.com/user-attachments/assets/84d2d8ac-d713-4461-962e-3ec857cca57c" />
+
+Desprès agafarem un disc buit de 20 GB i creem una única partició que ocupara tot el seu espai
+<img width="938" height="619" alt="Captura de pantalla de 2025-10-07 12-53-08" src="https://github.com/user-attachments/assets/39db787f-2703-49f4-a84c-a57ce0d7842e" />
+
+Podem veure com s'ha creat la partició
+<img width="644" height="232" alt="Captura de pantalla de 2025-10-07 12-53-32" src="https://github.com/user-attachments/assets/71f9f910-5899-45c5-8d2d-8525a0f12d40" />
+
+Seguidament podrem veure com s'ha formatat la partició /dev/sdb1 perquè pugui ser utilitzada per un sistema operatiu Linux per a emmagatzemar fitxers i carpetes
+<img width="836" height="319" alt="Captura de pantalla de 2025-10-07 12-55-48" src="https://github.com/user-attachments/assets/eb7aac0e-04dd-434d-a1c6-ddc0eb73ad89" />
+
+A continuació farem un **ls** per veure les carpetes que tenim a la nostra **/home**, farem un touch **hola**, per crear un fitxer, també farem un **mkdir hola** per crear una carpeta, amb **ls** podrem veure com s'ha creat correctament
+
+<img width="992" height="165" alt="Captura de pantalla de 2025-10-07 12-56-59" src="https://github.com/user-attachments/assets/38f82ecb-5cd2-443e-b9a6-1cb21ad2e4e5" />
+
+
+| Explicació | Foto |
+|---------------|---------------|
+| Una vegada fet tot l'anterior, ens surtira l'aplicació del timeshift, entrarem i ens surtirà l'assistent de configuració, triarem RSYNC | <img width="394" height="205" alt="Captura de pantalla de 2025-10-07 12-57-26" src="https://github.com/user-attachments/assets/27dcfdb0-290c-4f0b-90ba-c2bd2c3ee236" /> |
+| Seguidament escolliren el sdb1 que es el disc que hem creat anteriorment | <img width="580" height="210" alt="Captura de pantalla de 2025-10-07 12-58-01" src="https://github.com/user-attachments/assets/b4405e79-6436-4a75-a7d8-bace89cefda5" /> |
+| Ficarem que només cuan arranque | <img width="580" height="588" alt="Captura de pantalla de 2025-10-07 12-59-05" src="https://github.com/user-attachments/assets/848fa171-63c9-40c0-961f-b943852c7c51" /> |
+| Finalment posarem que s'exclueixin tots els fitxers de root, i que s'inclueixin tots els fitxers de l'usuari aaron de la carpeta **/home/aaron** | <img width="809" height="193" alt="Captura de pantalla de 2025-10-07 12-59-41" src="https://github.com/user-attachments/assets/428db28b-ec48-4a37-baa5-be296b6e3603" /> 
+
+
+
+
 ## Configuració de la xarxa
 Per configurar la xarxa el primer que farem serà anar  a la xarxa, per crear una nova, anirem a ipv4, i canviarem de dhcp a manual, ficarem la ip 192.168.203.156, serà /24 (255.255.255.0), i de gateway ficarem la 192.168.203.1
 <img width="740" height="596" alt="Captura de pantalla de 2025-10-07 13-43-31" src="https://github.com/user-attachments/assets/47758039-7da6-482c-983b-32044e0050ed" />
