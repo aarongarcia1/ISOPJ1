@@ -44,6 +44,33 @@ Copyleft: els usuaris poden usar, modificar i compartir lliurement l’obra. Obl
 
 Copyright: protegeix els drets del creador per controlar l’ús, la distribució i la modificació de l’obra, però no obliga que les obres derivades segueixin els mateixos termes. Serveix per protegir els drets dels creadors i incentivar la innovació. Exemples: All Rights Reserved, Public Domain Dedication, copyright.
 ## Gestors d'arrencada per a instal·lacions DUALS
+
+Un **gestor d’arrencada** és un programa que permet seleccionar quin sistema operatiu s’inicia quan s’engega l’ordinador.  
+A Linux, normalment s’utilitza **GRUB**, mentre que Windows compta amb el seu propi gestor, **BOOTMGR**.
+
+## Tipus de discs
+
+- **MBR**: antic, amb limitació de 4 particions primàries, o bé 3 primàries més 1 estesa, dins de la qual es poden crear particions lògiques.  
+- **GPT**: més modern, amb major flexibilitat.
+
+> ⚠️ Si es vol fer una instal·lació dual amb un sistema com Windows (BOOTMGR), que no protegeix els altres gestors, es pot “perdre” l’accés a Linux perquè:
+
+- **BOOTMGR**: sobreescriu el MBR/EFI, només arrenca Windows i no reconeix Linux.  
+- **GRUB**: permet gestionar diversos sistemes operatius, detecta Windows, s’instal·la al MBR/EFI i mostra un menú d’arrencada.
+
+En aquesta secció explicaré com configurar un sistema dual i com restaurar **GRUB**, utilitzant:
+
+- **Supergrub2**  
+- **ISO d’Ubuntu**
+
+## Instal·lació dual
+
+Primer cal modificar la configuració de **VirtualBox**, ja que requereix alguns ajustos específics. Els canvis són:
+
+1. Activar **EFI**.  
+2. Desactivar la connexió de xarxa per evitar haver d’iniciar sessió.  
+3. Canviar el tipus de sistema a **Windows** i ajustar la configuració de pantalla per evitar problemes.
+
 ## Punts de restauració
 ## Configuració de la xarxa
 Per configurar la xarxa el primer que farem serà anar  a la xarxa, per crear una nova, anirem a ipv4, i canviarem de dhcp a manual, ficarem la ip 192.168.203.156, serà /24 (255.255.255.0), i de gateway ficarem la 192.168.203.1
