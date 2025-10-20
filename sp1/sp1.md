@@ -30,6 +30,19 @@ Guest Additions
 
 
 ## Llicenciament
+Ubuntu compta amb una llicència **GPL (GNU General Public License)**, que permet als usuaris modificar, compartir i utilitzar el sistema de manera lliure.
+
+Hi ha diferents tipus de llicències en Linux, com ara:
+
+MIT License: semblant a la GPL, autoritza modificar, compartir i fer servir el programari lliurement, però a diferència de la GPL, només exigeix redistribuir el codi amb restriccions mínimes, sempre conservant l’avís de copyright original i la renúncia de responsabilitat.
+
+Apache License: permet als desenvolupadors utilitzar, modificar i redistribuir el programari, requerint que es documentin tots els canvis realitzats.
+
+Alguns conceptes que apareixen sovint en les llicències són:
+
+Copyleft: els usuaris poden usar, modificar i compartir lliurement l’obra. Obliga que les versions derivades mantinguin la mateixa llicència de copyright. Fomenta la col·laboració i l’intercanvi dins la comunitat creativa, com en el cas de la GPL o les llicències Creative Commons.
+
+Copyright: protegeix els drets del creador per controlar l’ús, la distribució i la modificació de l’obra, però no obliga que les obres derivades segueixin els mateixos termes. Serveix per protegir els drets dels creadors i incentivar la innovació. Exemples: All Rights Reserved, Public Domain Dedication, copyright.
 ## Gestors d'arrencada per a instal·lacions DUALS
 ## Punts de restauració
 ## Configuració de la xarxa
@@ -39,7 +52,7 @@ Per configurar la xarxa el primer que farem serà anar  a la xarxa, per crear un
 Farem un ping a 8.8.8.8, per comprovar la connectivitat
 <img width="898" height="394" alt="Captura de pantalla de 2025-10-07 13-44-05" src="https://github.com/user-attachments/assets/93836d20-6f92-4709-b5ec-ee0af2e9d847" />
 
-Seguidament anirem a /etc/netplan/ i l'archiu .yaml, l'utilitzarem per configurar la red, farem un *netplan apply* per a aplicar la configuració
+Seguidament anirem a /etc/netplan/ i l'archiu .yaml, l'utilitzarem per configurar la red, farem un **netplan apply** per a aplicar la configuració
 
 <img width="792" height="333" alt="Captura de pantalla de 2025-10-07 13-52-10" src="https://github.com/user-attachments/assets/52eefb4f-f552-494e-ae90-7c94b4ef58a8" />
 
@@ -50,7 +63,7 @@ Finalment farem un ping a 8.8.8.8 per veure la connectivitat que te
 Començarem fent un apt-cache policy, per veure les versions que tenim a la nostra màquina
 <img width="885" height="233" alt="2025-10-20_12-51" src="https://github.com/user-attachments/assets/a2f972c8-2512-4a4c-9a09-96f952ddb574" />
 
-Seguidament crearem l'archiu *audacity* dins de /etc/apt/preferences.d, que ja be per defecte
+Seguidament crearem l'archiu **audacity** dins de /etc/apt/preferences.d, que ja be per defecte
 <img width="612" height="57" alt="2025-10-20_13-03" src="https://github.com/user-attachments/assets/54a87eb4-b3e5-499f-a3fa-4ac83cb39591" />
 
 Dins de l'archiu posarem, el nom del paquet, l'altra versió de les 2 que tenim, (agafarem la que no va per defecte), i li canviarem la prioritat
@@ -63,7 +76,7 @@ Aqui podem veure com ja s'ha canviat la versió
 Instal·larem la dependencia
 <img width="859" height="156" alt="2025-10-20_13-07" src="https://github.com/user-attachments/assets/9ceaecea-5b58-4ff9-ab2f-5e8ff4751a67" />
 
-Finalment farem un *apt install audacity* i podem veure com ha instal·lat la versió que hem canviat
+Finalment farem un **apt install audacity** i podem veure com ha instal·lat la versió que hem canviat
 <img width="725" height="185" alt="2025-10-20_13-07_1" src="https://github.com/user-attachments/assets/ca721d46-51af-4fd8-9b38-975c16905b13" />
 
 
