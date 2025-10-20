@@ -34,7 +34,6 @@ Guest Additions
 ## Punts de restauració
 ## Configuració de la xarxa
 Per configurar la xarxa el primer que farem serà anar  a la xarxa, per crear una nova, anirem a ipv4, i canviarem de dhcp a manual, ficarem la ip 192.168.203.156, serà /24 (255.255.255.0), i de gateway ficarem la 192.168.203.1
-<img width="740" height="596" alt="Captura de pantalla de 2025-10-07 13-43-31" src="https://github.com/user-attachments/assets/ca1b5d81-f45f-4bf7-adb2-fea6919503b1" />
 
 ## Comandes generals i instal·lacions
 Començarem fent un apt-cache policy, per veure les versions que tenim a la nostra màquina
