@@ -27,7 +27,7 @@ Quan ja haguesem passat les particions creem l'usuari i contrasenya que utilitza
 Guest Additions
 
 <img width="885" height="435" alt="image" src="https://github.com/user-attachments/assets/2b645804-df63-4421-bd16-e6fc384754b6" />
-
+<br><br>
 
 ## Llicenciament
 Ubuntu compta amb una llicència **GPL (GNU General Public License)**, que permet als usuaris modificar, compartir i utilitzar el sistema de manera lliure.
@@ -70,6 +70,7 @@ Primer cal modificar la configuració de **VirtualBox**, ja que requereix alguns
 1. Activar **EFI**.  
 2. Desactivar la connexió de xarxa per evitar haver d’iniciar sessió.  
 3. Canviar el tipus de sistema a **Windows** i ajustar la configuració de pantalla per evitar problemes.
+<br><br>
 
 ## Punts de restauració
 
@@ -80,6 +81,7 @@ Desprès agafarem un disc buit de 20 GB i creem una única partició que ocupara
 <img width="938" height="619" alt="Captura de pantalla de 2025-10-07 12-53-08" src="https://github.com/user-attachments/assets/39db787f-2703-49f4-a84c-a57ce0d7842e" />
 
 Podem veure com s'ha creat la partició
+
 <img width="644" height="232" alt="Captura de pantalla de 2025-10-07 12-53-32" src="https://github.com/user-attachments/assets/71f9f910-5899-45c5-8d2d-8525a0f12d40" />
 
 Seguidament podrem veure com s'ha formatat la partició /dev/sdb1 perquè pugui ser utilitzada per un sistema operatiu Linux per a emmagatzemar fitxers i carpetes
@@ -88,7 +90,7 @@ Seguidament podrem veure com s'ha formatat la partició /dev/sdb1 perquè pugui 
 A continuació farem un **ls** per veure les carpetes que tenim a la nostra **/home**, farem un touch **hola**, per crear un fitxer, també farem un **mkdir hola** per crear una carpeta, amb **ls** podrem veure com s'ha creat correctament
 
 <img width="992" height="165" alt="Captura de pantalla de 2025-10-07 12-56-59" src="https://github.com/user-attachments/assets/38f82ecb-5cd2-443e-b9a6-1cb21ad2e4e5" />
-
+<br><br>
 
 | Explicació | Foto |
 |---------------|---------------|
@@ -98,7 +100,32 @@ A continuació farem un **ls** per veure les carpetes que tenim a la nostra **/h
 | Finalment posarem que s'exclueixin tots els fitxers de root, i que s'inclueixin tots els fitxers de l'usuari aaron de la carpeta **/home/aaron** | <img width="809" height="193" alt="Captura de pantalla de 2025-10-07 12-59-41" src="https://github.com/user-attachments/assets/428db28b-ec48-4a37-baa5-be296b6e3603" /> 
 
 
+Poden veure que ja hem finalitzat l'instantanea, tardarà uns 10 minuts en fer-se
+<img width="773" height="625" alt="Captura de pantalla de 2025-10-07 13-00-19" src="https://github.com/user-attachments/assets/965e3be5-aac1-484c-a6c9-41ec2f5c094f" />
 
+Crearem una altra instantanea, anirem a --> **crea*, i alli se'ns començarà a crear l'instantanea
+<img width="773" height="625" alt="Captura de pantalla de 2025-10-07 13-03-03" src="https://github.com/user-attachments/assets/5065d9a6-b26c-4b2e-98aa-5b6c7c4443bf" />
+
+Aqui podem veure com se'ns a creat l'ultima instantanea que estavem fent
+<img width="773" height="625" alt="Captura de pantalla de 2025-10-07 13-04-39" src="https://github.com/user-attachments/assets/eeca681b-8dd5-4b60-a6ed-d82392c307dc" />
+
+Ara el que farem serà borrar la carpeta adeu i el fitxer hola, això ho farem per recuperarem l'instantanea que hem creat i podrem recuperar-ho
+
+<img width="615" height="253" alt="Captura de pantalla de 2025-10-07 13-09-26" src="https://github.com/user-attachments/assets/84e9fcec-0abe-448f-b19b-7b4a29aaef64" />
+
+
+| **Recuperació** |
+|--------------|
+| Seleccionarem l'instantanea i clicarem a -->**recuperar**, farem siguiente, siguiente ,siguiente |
+| <img width="432" height="410" alt="Captura de pantalla de 2025-10-07 13-17-47" src="https://github.com/user-attachments/assets/eb33de0a-8140-418b-8a2f-6d89f8f420ed" /><img width="301" height="422" alt="Captura de pantalla de 2025-10-07 13-18-13" src="https://github.com/user-attachments/assets/c17e171a-c4e5-4ebc-bab5-3ce526ba3080" />  
+  <img width="301" height="422" alt="Captura de pantalla de 2025-10-07 13-18-19" src="https://github.com/user-attachments/assets/307f987e-3ec5-4173-b041-390c2c868c20" />  |
+
+Es reiniciara el sistema i amb una pantalla grisa, vol dir que s'està carregant l'instantanea
+<img width="806" height="805" alt="Captura de pantalla de 2025-10-07 13-18-44" src="https://github.com/user-attachments/assets/000aabeb-7d93-4565-b927-100795377155" />
+
+Finalment farem un ls i podrem veure que si teniem ben feta l'instantanea tindrem altra vegada la carpeta hola i el fitxer hola
+<img width="613" height="99" alt="Captura de pantalla de 2025-10-07 13-19-20" src="https://github.com/user-attachments/assets/04cb81cb-94e2-4fb2-8f8a-8a37f3f803aa" />
+<br><br>
 
 ## Configuració de la xarxa
 Per configurar la xarxa el primer que farem serà anar  a la xarxa, per crear una nova, anirem a ipv4, i canviarem de dhcp a manual, ficarem la ip 192.168.203.156, serà /24 (255.255.255.0), i de gateway ficarem la 192.168.203.1
