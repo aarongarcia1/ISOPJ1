@@ -34,10 +34,15 @@ Guest Additions
 ## Punts de restauració
 ## Configuració de la xarxa
 Per configurar la xarxa el primer que farem serà anar  a la xarxa, per crear una nova, anirem a ipv4, i canviarem de dhcp a manual, ficarem la ip 192.168.203.156, serà /24 (255.255.255.0), i de gateway ficarem la 192.168.203.1
+<img width="740" height="596" alt="Captura de pantalla de 2025-10-07 13-43-31" src="https://github.com/user-attachments/assets/47758039-7da6-482c-983b-32044e0050ed" />
+
+Farem un ping a 8.8.8.8, per comprovar la connectivitat
+<img width="898" height="394" alt="Captura de pantalla de 2025-10-07 13-44-05" src="https://github.com/user-attachments/assets/93836d20-6f92-4709-b5ec-ee0af2e9d847" />
+
 
 ## Comandes generals i instal·lacions
 Començarem fent un apt-cache policy, per veure les versions que tenim a la nostra màquina
-<img width="885" height="233" alt="2025-10-20_12-51" src="https://github.com/user-attachmnts/assets/daaab46e-158e-43e4-85f1-8f279ee24e76" />
+<img width="885" height="233" alt="2025-10-20_12-51" src="https://github.com/user-attachments/assets/a2f972c8-2512-4a4c-9a09-96f952ddb574" />
 
 Seguidament crearem l'archiu *audacity* dins de /etc/apt/preferences.d, que ja be per defecte
 <img width="612" height="57" alt="2025-10-20_13-03" src="https://github.com/user-attachments/assets/54a87eb4-b3e5-499f-a3fa-4ac83cb39591" />
