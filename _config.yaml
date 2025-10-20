@@ -1,11 +1,9 @@
-theme: minima
+# _config.yml
 
-sass:
-  style: compressed
-
-plugins:
-  - jekyll-seo-tag
-  
-# Puedes añadir un título y descripción para que aparezcan en la cabecera
+# Título y descripción de tu sitio
 title: Curs d'implementació de sistemes operatius
 description: Material del curs de Machine Learning desenvolupat per Mireia Consarnau.
+
+# LA LÍNEA MÁS IMPORTANTE PARA QUE FUNCIONE EN TU URL
+# Le dice a Jekyll que tu sitio está en la carpeta /ISOPJ1
+baseurl: "/ISOPJ1"
