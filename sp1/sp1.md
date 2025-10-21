@@ -71,6 +71,8 @@ Primer cal modificar la configuració de **VirtualBox**, ja que requereix alguns
 2. Desactivar la connexió de xarxa per evitar haver d’iniciar sessió.  
 3. Canviar el tipus de sistema a **Windows** i ajustar la configuració de pantalla per evitar problemes.
 
+## Instal·lació Windows
+
 | Explicació | Foto |
 |---------------|---------------|
 | Començarem afegint 8G de ram per augmentar la memoria disponible | <img width="867" height="571" alt="Captura de pantalla de 2025-09-30 13-10-15" src="https://github.com/user-attachments/assets/6baf7e28-0fa1-4c56-8386-d5aefd42e922" /> |
@@ -79,7 +81,56 @@ Primer cal modificar la configuració de **VirtualBox**, ja que requereix alguns
 | Triarem l'opció de les particions personalitzades, per escollir l'emmagatzematge que tindrà | <img width="601" height="398" alt="Captura de pantalla de 2025-09-30 13-26-16" src="https://github.com/user-attachments/assets/4eabe72c-f7e2-4944-b8e8-2cbc8c91d31b" /> |
 | Triarem les 38G que ens sobraben i aqui instal·larem el windows | <img width="637" height="512" alt="Captura de pantalla de 2025-09-30 13-37-18" src="https://github.com/user-attachments/assets/3e5a95e5-d4a2-4997-acaf-cb71e4d7a2d5" /> |
 
+## Partició Windows i Grub desde Ubuntu
 
+Tornarem a entrar al boot menú
+
+<img width="640" height="479" alt="Captura de pantalla de 2025-10-06 11-59-11" src="https://github.com/user-attachments/assets/8f42655c-69c5-431e-a2ed-ecf45f2dfb74" />
+
+Anirem al que posa CD-ROM
+
+<img width="640" height="479" alt="Captura de pantalla de 2025-10-06 11-59-39" src="https://github.com/user-attachments/assets/0d087c56-9ebf-495e-a7b2-aba3eebac674" />
+
+Escollirem Detect and show boot methods, per a que ens detecte l'ubuntu
+
+<img width="640" height="479" alt="Captura de pantalla de 2025-10-06 11-59-43" src="https://github.com/user-attachments/assets/9633120b-fa0e-4194-9069-d483fb17df8a" />
+
+I baixarem fins que trobesem la opció **d'Ubuntu**
+
+<img width="592" height="265" alt="image" src="https://github.com/user-attachments/assets/2d5bde43-a9b6-4e05-8375-c9f61adaa7b7" />
+
+Una vegada dins de l'ubuntu, farem un **apt install --reinstall grub-pc**, el que fa es que reinstal·la el gestor d’arrencada GRUB (versió BIOS) al sistema, reparant-ne els fitxers i permetent tornar-lo a instal·lar al disc
+
+<img width="961" height="344" alt="Captura de pantalla de 2025-10-06 12-13-10" src="https://github.com/user-attachments/assets/f2c778f5-4689-4890-8f4b-5efa008ee0eb" />
+
+Montarem la partició que hem creat abans al **/boot/efi/**
+
+<img width="504" height="51" alt="Captura de pantalla de 2025-10-06 12-18-45" src="https://github.com/user-attachments/assets/14c566f9-3db3-4d1a-941d-f2ebcf72766a" />
+
+
+| **Instal·lació efi** |
+|--------------|
+| Instal·larem el efibootmgr i el grub-efi |
+| <img width="476" height="110" alt="Captura de pantalla de 2025-10-06 12-34-38" src="https://github.com/user-attachments/assets/11091f68-54db-4f2b-81e2-7fe12be61401" />
+<img width="494" height="141" alt="Captura de pantalla de 2025-10-06 12-37-03" src="https://github.com/user-attachments/assets/ff46340a-c825-43a1-bde7-7263390c35be" /> |
+
+
+Utilitzarem la comanda grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ubuntu, serveix per:
+
+Aquí ho tens en llenguatge Markdown:
+
+La comanda `grub-install` instal·la el **GRUB** (*GRand Unified Bootloader*), que és el programari que s'executa en engegar l'ordinador i et permet triar quin sistema operatiu iniciar.
+
+A continuació es detalla cada part de la comanda:
+
+* `--target=x86_64-efi`: Especifica que la instal·lació és per a un sistema modern de **64 bits** (`x86_64`) amb firmware **UEFI** (`efi`).
+
+* `--efi-directory=/boot/efi`: Indica la ubicació de la partició especial del sistema (coneguda com a ESP o *EFI System Partition*), on es desen els fitxers d'arrencada.
+
+* `--bootloader-id=ubuntu`: Assigna el nom "**ubuntu**" a aquesta entrada al menú d'arrencada de la UEFI per poder identificar-la fàcilment, especialment si hi ha altres sistemes operatius instal·lats.
+<img width="996" height="55" alt="Captura de pantalla de 2025-10-06 12-37-44" src="https://github.com/user-attachments/assets/92548768-047b-4c65-9016-d0e22d5e1dc3" />
+
+I fins aqui perque la màquina virtual no reconeix la partició.
 
 
 <br><br>
