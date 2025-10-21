@@ -70,8 +70,19 @@ Primer cal modificar la configuració de **VirtualBox**, ja que requereix alguns
 1. Activar **EFI**.  
 2. Desactivar la connexió de xarxa per evitar haver d’iniciar sessió.  
 3. Canviar el tipus de sistema a **Windows** i ajustar la configuració de pantalla per evitar problemes.
-<br><br>
 
+| Explicació | Foto |
+|---------------|---------------|
+| Començarem afegint 8G de ram per augmentar la memoria disponible | <img width="867" height="571" alt="Captura de pantalla de 2025-09-30 13-10-15" src="https://github.com/user-attachments/assets/6baf7e28-0fa1-4c56-8386-d5aefd42e922" /> |
+| Seguidament llevarem la iso que teniem d'ubuntu i la canviarem per la iso de **Windows 10 enterprise** | <img width="249" height="123" alt="Captura de pantalla de 2025-09-30 13-21-13" src="https://github.com/user-attachments/assets/d8f4dbda-35f9-4ee3-85a8-c6eac811c3f2" /> |
+| Cuan arranque clicarem **ESC** per a entrar al **boot menú**, i alli seleccionarem el windows i el començarem a instal·lar| <img width="617" height="595" alt="Captura de pantalla de 2025-09-30 13-22-26" src="https://github.com/user-attachments/assets/4c8c30a5-b276-4cde-9aa7-a2852e0b1328" /> |
+| Triarem l'opció de les particions personalitzades, per escollir l'emmagatzematge que tindrà | <img width="601" height="398" alt="Captura de pantalla de 2025-09-30 13-26-16" src="https://github.com/user-attachments/assets/4eabe72c-f7e2-4944-b8e8-2cbc8c91d31b" /> |
+| Triarem les 38G que ens sobraben i aqui instal·larem el windows | <img width="637" height="512" alt="Captura de pantalla de 2025-09-30 13-37-18" src="https://github.com/user-attachments/assets/3e5a95e5-d4a2-4997-acaf-cb71e4d7a2d5" /> |
+
+
+
+
+<br><br>
 ## Punts de restauració
 
 Primerament farem un **apt install timeshift**, aquesta eina s'utilitza per restaurar el sistema si una actualització la trenca
