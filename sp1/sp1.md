@@ -4,7 +4,6 @@ title: "Sprint 1: Instal·lació i Configuració Inicial"
 ---
 
 ## Virtualització i instal·lació del SO Ubuntu
-<img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/d338cceb-abb3-433a-b5ac-8b760f4b5582" />
 
 He configurat la màquina amb 8 GB de RAM, 2 CPU i un disc de 80 GB, perquè més endavant necessito fer 2 particions de 40 GB cadascuna.
 
