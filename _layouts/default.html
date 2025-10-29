@@ -9,11 +9,14 @@
 <body>
     <div class="code-rain" id="codeRain"></div>
     <main id="main-content">
-        {{ content }}
-        <!-- Botón para volver al inicio -->
-        <div style="text-align:center; margin-top: 20px;">
+        {% unless page.url == "/" %}
+        <!-- Botón para volver al inicio, solo en subpáginas -->
+        <div style="text-align:center; margin-bottom: 20px;">
             <a href="{{ '/' | relative_url }}" class="volver-boton">⬅ Inici</a>
         </div>
+        {% endunless %}
+
+        {{ content }}
     </main>
     <script src="{{ '/assetscss/script.js' | relative_url }}"></script>
 </body>
