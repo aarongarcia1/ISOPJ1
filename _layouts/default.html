@@ -10,6 +10,10 @@
     <div class="code-rain" id="codeRain"></div>
     <main id="main-content">
         {{ content }}
+        <!-- Botón para volver al inicio -->
+        <div style="text-align:center; margin-top: 20px;">
+            <a href="{{ '/' | relative_url }}" class="volver-boton">⬅ Volver al inicio</a>
+        </div>
     </main>
     <script src="{{ '/assetscss/script.js' | relative_url }}"></script>
 </body>
