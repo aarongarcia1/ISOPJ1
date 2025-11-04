@@ -1,4 +1,4 @@
-#<h2>  🌀  Sprint 2: Instal·lació · Configuració de Programari de Base · Gestió de Fitxers</h2>
+# 🌀  Sprint 2: Instal·lació · Configuració de Programari de Base · Gestió de Fitxers
 
 <h3>Índex</h3>
 
