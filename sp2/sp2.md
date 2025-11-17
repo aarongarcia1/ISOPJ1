@@ -35,10 +35,10 @@ Això provoca que els accessos siguin més lents i, per tant, **baixa el rendime
 N’hi ha de molts tipus, cadascun optimitzat per a diferents usos, i cada sistema té unes limitacions.
 
 - **Windows:** `NTFS`, `FAT32`
-  <img width="493" height="113" alt="2025-10-27_12-55" src="https://github.com/user-attachments/assets/70c5ead5-c84c-428b-b58d-d54629b2836c" />
+<img width="493" height="113" alt="2025-10-27_12-55" src="https://github.com/user-attachments/assets/70c5ead5-c84c-428b-b58d-d54629b2836c" />
 
 - **Ubuntu:** `ext4`
-  <img width="823" height="265" alt="2025-10-27_12-54" src="https://github.com/user-attachments/assets/ed33e9f5-8e01-4831-8209-7aa8d246bed1" />
+<img width="823" height="265" alt="2025-10-27_12-54" src="https://github.com/user-attachments/assets/ed33e9f5-8e01-4831-8209-7aa8d246bed1" />
 
 ---
 
