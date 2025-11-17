@@ -81,9 +81,10 @@ Crearem la carpeta p1 i montem la partició de disc `/dev/sdb1` al directori `/m
 <img width="486" height="268" alt="2025-10-27_13-10" src="https://github.com/user-attachments/assets/6af3f719-28e2-4441-8e55-79628e69e97b" />
 
 Crearem la carpeta **hhh**, dins de la carpeta `mnt/p1`
-<img width="286" height="80" alt="2025-10-27_13-11" src="https://github.com/user-attachments/assets/faa8075c-ff23-4c22-aafa-1e09dc14321c" />
 
-Afeim la partició `/dev/sdb1` al fitxer `/etc/fstab` per muntar-la automàticament com a **ext4** al punt `/mnt/p1` cada vegada que el sistema s'engegui
+<img width="286" height="80" alt="2025-10-27_13-11" src="https://github.com/user-attachments/assets/faa8075c-ff23-4c22-aafa-1e09dc14321c" />
+<br></br>
+Afegim la partició `/dev/sdb1` al fitxer `/etc/fstab` per muntar-la automàticament com a **ext4** al punt `/mnt/p1` cada vegada que el sistema s'engegui
 <img width="968" height="264" alt="2025-10-27_13-16" src="https://github.com/user-attachments/assets/b2144a34-d388-4b85-866e-160bb21e7c00" />
 
 
