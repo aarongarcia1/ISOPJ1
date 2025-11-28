@@ -91,7 +91,11 @@ Afegim la partició `/dev/sdb1` al fitxer `/etc/fstab` per muntar-la automàtica
 ---
 
 ##  2. Gestió de processos
+ /etc/passwd
+ 
+ /etc/group
 
+ /etc/shadow 
 ---
 
 ##  3. Gestió d'usuaris i grups i permisos
