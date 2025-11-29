@@ -121,6 +121,9 @@ Hem examinat el fitxer /etc/group, que serveix per definir tots els grups existe
 Finalment, vam revisar /etc/gshadow, que és l'equivalent segur de /etc/group. Aquest fitxer s'utilitza per guardar contrasenyes xifrades per a grups, en cas que un grup sigui protegit amb contrasenya, i gestiona els administradors de cada grup.
 
 <img width="963" height="832" alt="2025-11-04_12-59" src="https://github.com/user-attachments/assets/d4605757-368c-4e3a-9cf0-95a9d98fca1a" />
+---
+
+##  3. Gestió d'usuaris i grups i permisos
 
 2. Creació i Gestió de l'Usuari gina
 Ara anirem a crear l'usuari gina utilitzant la comanda adduser, que és l'eina més senzilla, ja que automatitza molts passos.
@@ -247,10 +250,183 @@ Vam fer servir el grup parchis (amb membres roig, verd i groc) per demostrar les
 
 <img width="506" height="486" alt="2025-11-17_11-58" src="https://github.com/user-attachments/assets/9b980022-6dc5-4793-8d36-75d48321e755" />
 
+8. Preparo la Plantilla d'Usuari (/etc/skel)
+Primer de tot, entro al directori esquelètic (/etc/skel), que és la plantilla per als nous usuaris. Jo vull que, per defecte, tinguin alguna cosa més que els fitxers bàsics.
 
----
+He creat una carpeta nova que he anomenat prova (mkdir prova).
 
-##  3. Gestió d'usuaris i grups i permisos
+He creat un fitxer buit que es diu hola (touch hola).
+
+D'aquesta manera, qualsevol usuari nou que creï a partir d'ara tindrà aquests dos elements al seu directori personal.
+
+<img width="556" height="389" alt="2025-11-17_12-07" src="https://github.com/user-attachments/assets/bf2d5117-24ac-4bdd-aef0-2626b3f4564d" />
+
+
+9. Definim els Paràmetres Generals (/etc/adduser.conf)
+Després, vaig a configurar com s'han de crear els usuaris amb l'eina adduser. He editat el fitxer /etc/adduser.conf i he fet tres canvis clau:
+
+Canvio la ubicació dels Home Directories: He canviat DHOME de l'estàndard /home a /var. Això vol dir que els directoris personals aniran a /var/nom_usuari.
+
+Canvio els UIDs/GIDs: Vull que els nous usuaris i els seus grups comencin a partir del 3000; per això he definit FIRST_UID=3000 i FIRST_GID=3000.
+
+<img width="1009" height="798" alt="2025-11-17_12-12" src="https://github.com/user-attachments/assets/86158f90-c0f6-4b55-a6d8-3c8af8ee4c84" />
+
+10. Definim les Regles de Seguretat (/etc/login.defs)
+Per motius de seguretat, he definit una política de contrasenyes global. A /etc/login.defs, he establert aquestes regles:
+
+Validesa Màxima: He posat PASS_MAX_DAYS 20. Les contrasenyes caducaran als 20 dies.
+
+Interval Mínim: He posat PASS_MIN_DAYS 15. Caldrà esperar 15 dies entre canvi i canvi de contrasenya.
+
+Avisos: He definit PASS_WARN_AGE 3. L'usuari rebrà un avís 3 dies abans que la contrasenya caduqui.
+
+<img width="1001" height="394" alt="2025-11-17_12-14" src="https://github.com/user-attachments/assets/412d831a-7cb8-4135-bf0f-893a658e5cb5" />
+
+11. M'Asseguro que la Shell sigui Bash (/etc/default/useradd)
+Com que l'eina useradd és de baix nivell i a vegades utilitza una shell més simple (/bin/sh), he editat /etc/default/useradd i he canviat SHELL a /bin/bash. Així m'asseguro que qualsevol usuari, independentment de com es creï, utilitzi Bash.
+
+<img width="1014" height="183" alt="2025-11-17_12-20" src="https://github.com/user-attachments/assets/9a080546-9a92-4686-973d-eab831bc068c" />
+
+
+12. Poso a Prova la Configuració (Usuari negre)
+He creat l'usuari negre utilitzant la comanda useradd negre. Després he comprovat el resultat:
+
+He vist que se li ha assignat l'UID 3001 (el següent al 3000).
+
+He comprovat que la seva shell és /bin/bash (gràcies al canvi que he fet a l'apartat 11).
+
+<img width="1014" height="183" alt="2025-11-17_12-20" src="https://github.com/user-attachments/assets/0d51493e-9fb2-4c1c-b0c0-a9363df835b7" />
+
+13. Verifico que Tot Funcioni (Usuari gris)
+Aquest és el pas on es veu que la configuració global ha funcionat correctament. Després de crear l'usuari gris (que ha agafat l'UID 3000, el primer disponible):
+
+Comprovo el seu perfil: Veig que l'usuari gris té l'UID/GID 3000 i el seu directori personal està correctament a /var/gris (tal com volia a l'apartat 9).
+
+Comprovo la seguretat: A /etc/shadow, confirmo que les regles de caducitat (15 dies mínim, 20 dies màxim, 3 dies d'avís) s'han aplicat correctament.
+
+Comprovo la plantilla: Quan llisto el contingut de /var/gris, veig els fitxers de sessió (com .bashrc) i, molt important, la carpeta prova i el fitxer hola que vaig posar a la plantilla a l'apartat 8. 
+
+<img width="880" height="356" alt="2025-11-17_12-19" src="https://github.com/user-attachments/assets/1455cbbf-9b9a-42d8-bada-3948dc3a4903" />
+
+14. Personalitzo l'Inici de Sessió (.profile)
+Ara torno a la plantilla (/etc/skel) per afegir més personalització. He editat el fitxer .profile i hi he afegit la línia PWD="/var/$USER". Amb això intento assegurar-me que, quan un usuari faci login, estigui ben situat al seu directori a /var.
+
+<img width="955" height="514" alt="2025-11-17_12-27" src="https://github.com/user-attachments/assets/03c52410-00c5-4654-a88d-7198eb4be395" />
+
+
+15. Afegeixo un Àlies (.bashrc)
+Després, he editat el fitxer .bashrc de la plantilla. Aquí he creat un àlies, que és una drecera de comanda:
+
+He afegit: alias connexio='ls -la'
+
+Això vol dir que tots els nous usuaris podran escriure connexio en lloc de la comanda més llarga ls -la.
+
+<img width="960" height="95" alt="2025-11-17_12-30" src="https://github.com/user-attachments/assets/5b30f022-4018-430c-94b3-1267fd5a3a0e" />
+
+16. Configuro la Neteja Automàtica (.bash_logout)
+I l'últim canvi és la neteja automàtica. He editat el fitxer .bash_logout (el que s'executa quan tanques la sessió) i he afegit una comanda forta:
+
+He afegit: rm -r /var/"$USER"/*
+
+Amb això, tot el contingut del directori personal de l'usuari s'esborrarà automàticament cada vegada que tanquin la sessió. Així, el seu espai de treball serà sempre temporal.
+
+<img width="986" height="161" alt="2025-11-17_12-32" src="https://github.com/user-attachments/assets/531f6554-8c84-4d5f-aef1-57885ab058f7" />
+
+17. Verificació d'Inici de Sessió
+He comprovat que l'usuària rosa pot fer login sense problemes i llistar el contingut del seu directori. Aquesta acció confirma que l'usuari s'ha creat correctament.
+
+<img width="643" height="397" alt="2025-11-17_12-36" src="https://github.com/user-attachments/assets/4462da4f-a887-4963-8622-5021bb491318" />
+
+18. Prova de Permisos Compartits
+He creat el directori palomes/ i he aplicat els permisos rwxr-xr-- per fer un test de seguretat. He verificat que:
+
+El propietari (nick) hi pot escriure i esborrar.
+
+El membre del grup (cire) només pot entrar i llegir.
+
+Els altres usuaris (ferran) tenen l'accés denegat (r--).
+
+<img width="737" height="820" alt="2025-11-18_13-53" src="https://github.com/user-attachments/assets/fdc8745a-3194-4c85-95e1-bd5b73f92883" />
+
+
+**ACL**
+
+19. Prova de Permisos Tradicionals i ACL Bàsica
+
+Què faig aquí? Primer, creo un parell d'elements per fer proves: un directori anomenat proves i un fitxer anomenat proves2.
+
+Assigno permisos tradicionals:
+
+Al directori proves, li poso 750 (chmod 750 proves). Això vol dir que el propietari (jo) té tot el control, el grup pot llegir i entrar (r-x), i els altres no tenen cap permís (---).
+
+Miro les ACLs:
+
+Executo getfacl al directori proves per comprovar si hi ha ACLs aplicades, i veig que de moment només hi ha els permisos tradicionals.
+
+<img width="553" height="453" alt="2025-11-24_12-00" src="https://github.com/user-attachments/assets/db24f700-9949-48ca-8991-dfcd2373cb15" />
+
+20. Assignació i Verificació d'ACL Específic
+
+Què faig aquí? Vull donar accés d'escriptura a un usuari concret (roig) en un fitxer, sense canviar els permisos del grup o d'altres.
+
+Aplico una ACL: Faig servir setfacl -m user:roig:rw- proves2. Amb això, li dono permisos de Lectura i Escriptura (rw-) a l'usuari roig només sobre el fitxer proves2.
+
+Verifico l'ACL: Quan executo getfacl proves2, veig clarament que l'usuari roig apareix a la llista amb rw-, mentre que el grup i els altres usuaris continuen amb permisos restringits.
+
+Provo l'accés (Usuaris blau i roig):
+
+Intento entrar com a blau i modificar el fitxer, però fallo (ni tan sols tinc permisos de sudo).
+
+Quan entro com a roig i executo nano /var/proves2, puc obrir el fitxer i començar a editar-lo.
+
+<img width="443" height="182" alt="2025-11-24_12-02" src="https://github.com/user-attachments/assets/8c8a8d9d-fde5-4da2-a89b-6c2e61962458" />
+<img width="582" height="194" alt="2025-11-24_12-05" src="https://github.com/user-attachments/assets/4d3b9f55-0dbb-4451-a83d-b1606069cbfd" />
+
+21. Demostració de la Prioritat d'ACL
+
+Què faig aquí? Aquesta és una prova avançada on demostro que les ACLs poden sobreescriure i denegar un permís que la configuració tradicional sí que permetria.
+
+Crec un directori compartit obert: Crec el directori compartida i li poso els permisos més oberts possibles: 777 (rwxrwxrwx). En teoria, tothom hi hauria de poder entrar.
+
+Aplico una ACL de denegació: Intencionadament, faig servir setfacl -m user:roig:--- compartida/ per treure TOTS els permisos a l'usuari roig sobre aquest directori.
+
+Provo l'accés: Entro com a roig i intento entrar al directori (cd /compartida/).
+
+<img width="685" height="582" alt="2025-11-24_12-13" src="https://github.com/user-attachments/assets/ac6d50a1-bf27-4dfa-bd3e-b51af9629891" />
+<img width="592" height="336" alt="2025-11-24_12-24" src="https://github.com/user-attachments/assets/3f314763-7d3f-472d-8625-600c6e2bda77" />
+
+22. Neteja d'ACL
+
+Què faig aquí? Un cop feta la prova de l'ACL, vull deixar el fitxer com estava, sense cap llista de control d'accés especial.
+
+Elimino l'ACL: Faig servir setfacl -b proves2. El paràmetre -b indica que esborri totes les ACLs del fitxer.
+
+Verifico: Executo getfacl proves2 i confirmo que l'entrada d'usuari roig:rw- ja no hi és.
+
+<img width="412" height="399" alt="2025-11-24_12-22" src="https://github.com/user-attachments/assets/824a4f15-4f06-4511-a6a7-46e8900e47fb" />
+
+23. Configuració Local de la Màscara de Creació (umask)
+
+Què faig aquí? Aquesta prova és per veure com la màscara de creació de fitxers afecta els permisos dels elements nous.
+
+Canvio el umask: Canvio el valor de umask al terminal de 0002 a 0004.
+
+Creeu elements nous: Després, creo un directori (mkdir proves) i un fitxer (touch proves2).
+
+Llisto els permisos: Amb ls -l, miro quins permisos tenen els elements creats amb el nou umask.
+
+<img width="535" height="221" alt="2025-11-25_13-18" src="https://github.com/user-attachments/assets/0fbc08fc-55bd-48d2-9865-43c30e8334b3" />
+
+24. Configuració Global de la Màscara de Creació (/etc/login.defs)
+
+Què faig aquí? Vull aplicar un umask concret a tots els usuaris del sistema per defecte.
+
+Edito el fitxer global: Utilitzo nano per editar el fitxer /etc/login.defs.
+
+Canvio el valor UMASK: He canviat el valor per defecte (022) a 033.
+
+<img width="1040" height="477" alt="2025-11-25_13-20" src="https://github.com/user-attachments/assets/bf20e63e-2a37-4401-bb15-90a5f17f7a4c" />
+
 
 ---
 
