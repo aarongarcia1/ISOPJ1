@@ -449,8 +449,12 @@ Canvio el valor UMASK: He canviat el valor per defecte (022) a 033.
     3. dd : "no és una eina per a copiar", però quan volem copiar tot un disc/partició, s'utilitza per copiar
        
 4. Pràctica comandes Backups
-    1. cp 
-    2. rysnc 
+    1. cp
+       <img width="688" height="180" alt="2025-12-01_13-23" src="https://github.com/user-attachments/assets/d78feea3-5479-4665-9186-1856a1fbb6a4" />
+
+    2. rysnc
+       <img width="761" height="517" alt="2025-12-01_13-28" src="https://github.com/user-attachments/assets/cd90257e-fc9c-440e-ad39-6b477bdc944d" />
+
     3. dd 
 
 5. Pràctica programes Backups
