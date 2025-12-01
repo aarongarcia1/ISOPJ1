@@ -436,15 +436,22 @@ Canvio el valor UMASK: He canviat el valor per defecte (022) a 033.
  Què és una còpia de seguretat?
 
  1.1 Tipus de còpies de seguretat
-         - completa
-         - diferencial
-         - incremental
-3. Teoria comandes Backups
+      |                | Què és                                                                 | Què necessiten                                      |
+      |----------------|------------------------------------------------------------------------|-----------------------------------------------------|
+      | **Completa**   | Còpia de seguretat de totes les dades                                 | Només la còpia completa                             |
+      | **Diferencial**| Còpia de tots els canvis des de l’última còpia **completa**           | L’última còpia completa + la còpia diferencial      |
+      | **Incremental**| Còpia només dels canvis des de l’última còpia (sigui completa o incr.)| L’última còpia completa + totes les incrementals    |
 
+2. Teoria comandes Backups
+   
+    1. cp : còpia simple que no es intel·ligent, transfereix archius només localment i no optimitza ni temps ni espais
+    2. rysnc : és una eina intel·ligent que només còpia els fitxers modificats, treballa en local i en remot
+    3. dd : "no és una eina per a copiar", però quan volem copiar tot un disc/partició, s'utilitza per copiar
+       
 4. Pràctica comandes Backups
-    1. cp
-    2. rysnc
-    3. dd
+    1. cp 
+    2. rysnc 
+    3. dd 
 
 5. Pràctica programes Backups
     1. Deja-Dup
