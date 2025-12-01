@@ -432,6 +432,29 @@ Canvio el valor UMASK: He canviat el valor per defecte (022) a 033.
 
 ##  4. Còpies de seguretat i automatització de tasques
 
+1. Teoria Còpies de Seguretat
+ Què és una còpia de seguretat?
+
+ 1.1 Tipus de còpies de seguretat
+         - completa
+         - diferencial
+         - incremental
+3. Teoria comandes Backups
+
+4. Pràctica comandes Backups
+    1. cp
+    2. rysnc
+    3. dd
+
+5. Pràctica programes Backups
+    1. Deja-Dup
+    2. Duplicity
+      
+6. Teoria Automatització scripts, cron anacron
+
+7. Pràctica automatització
+    1. cron
+    2. anacron
 ---
 
 ##  5. Quotes d'usuari
