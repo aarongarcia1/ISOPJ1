@@ -438,34 +438,66 @@ Canvio el valor UMASK: He canviat el valor per defecte (022) a 033.
  1.1 Tipus de còpies de seguretat
       |                | Què és                                                                 | Què necessiten                                      |
       |----------------|------------------------------------------------------------------------|-----------------------------------------------------|
-      | **Completa**   | Còpia de seguretat de totes les dades                                 | Només la còpia completa                             |
-      | **Diferencial**| Còpia de tots els canvis des de l’última còpia **completa**           | L’última còpia completa + la còpia diferencial      |
-      | **Incremental**| Còpia només dels canvis des de l’última còpia (sigui completa o incr.)| L’última còpia completa + totes les incrementals    |
+      | **Completa**   | Còpia de seguretat de totes les dades                                 | Només la còpia completa                              |
+      | **Diferencial**| Còpia de tots els canvis des de l’última còpia **completa**           | L’última còpia completa + la còpia diferencial       |
+      | **Incremental**| Còpia només dels canvis des de l’última còpia (sigui completa o incr.)| L’última còpia completa + totes les incrementals     |
 
-2. Teoria comandes Backups
-   
-    1. cp : còpia simple que no es intel·ligent, transfereix archius només localment i no optimitza ni temps ni espais
-    2. rysnc : és una eina intel·ligent que només còpia els fitxers modificats, treballa en local i en remot
-    3. dd : "no és una eina per a copiar", però quan volem copiar tot un disc/partició, s'utilitza per copiar
        
-4. Pràctica comandes Backups
+3. Teoria i Pràctica comandes Backups
     1. cp
+L'ordre cp:
+És l'eina més bàsica i comuna per copiar fitxers i directoris en sistemes Linux. El seu funcionament es basa a crear una còpia nova d'un element en una ubicació diferent. S'utilitza principalment per a tasques quotidianes i ràpides. Per exemple, si copies un directori amb cp -r, el sistema simplement llegirà els fitxers de l'origen i els escriurà de nou al destí. És ideal per a còpies simples, però no és la millor opció per a grans volums de dades o còpies de seguretat complexes, ja que no verifica de forma avançada si els fitxers ja existeixen o si han canviat.
        <img width="688" height="180" alt="2025-12-01_13-23" src="https://github.com/user-attachments/assets/d78feea3-5479-4665-9186-1856a1fbb6a4" />
 
     2. rysnc
+L'ordre rsync
+Aquesta és una eina molt més avançada i intel·ligent, dissenyada específicament per a la sincronització de dades i còpies de seguretat. La seva principal característica és que utilitza un algorisme de "delta transfer", el que significa que només copia les diferències entre l'origen i el destí. Si un fitxer ja existeix i no ha canviat, rsync no el tornarà a copiar, cosa que estalvia molt de temps i amplada de banda. A més, permet mantenir els permisos, els propietaris i les dates originals dels fitxers, i funciona tant en local com entre servidors remots a través de la xarxa.
        <img width="761" height="517" alt="2025-12-01_13-28" src="https://github.com/user-attachments/assets/cd90257e-fc9c-440e-ad39-6b477bdc944d" />
 
-    3. dd 
+    3. dd
+L'ordre dd (Dataset Definition / Data Duplicator)
+A diferència de les altres dues, dd no entén de "fitxers" en el sentit tradicional, sinó que treballa a baix nivell amb blocs de dades. Com has vist en les teves captures, s'utilitza per copiar directament el contingut d'un dispositiu de bloc (com un disc dur sencer o una partició) a un altre. Això vol dir que copia fins i tot l'espai buit, la taula de particions i el sector d'arrencada. És una eina extremadament potent i perillosa, sovint anomenada "disk destroyer" si s'utilitza malament, perquè si t'equivoques en la lletra de la unitat de destí, sobreescriurà tot el contingut de forma irreversible.
 
-5. Pràctica programes Backups
-    1. Deja-Dup
-    2. Duplicity
+       <img width="737" height="294" alt="2025-12-09_12-59" src="https://github.com/user-attachments/assets/edb8ca45-5fcc-4223-9866-5eeeceac4553" />
+
+4. Automatitzacions ( scripts, cron i anacron )
+   1. Creació de l'script de còpia de seguretat
+      He creat un script en Bash anomenat copies.sh. Aquest script defineix una variable TIMESTAMP per obtenir la data i hora actual i utilitza el comanda tar per empaquetar i comprimir el directori           d'imatges. L'arxiu resultant es desa a l'Escriptori amb un nom únic
+
+      <img width="1007" height="100" alt="2025-12-09_13-23" src="https://github.com/user-attachments/assets/bacdb0cd-09cc-4a00-811c-12312443711a" />
+
+   2. Preparació de l'entorn de proves
+      Abans d'executar la còpia, preparem el directori d'origen. Entrem a la carpeta Imatges/ i creem fitxers buits (.bmp i .jpg) amb la comanda touch. Això serveix per verificar que l'script realment         inclou fitxers dins del paquet comprimit
+
+      <img width="572" height="128" alt="2025-12-09_13-33" src="https://github.com/user-attachments/assets/4b2f028c-6404-415a-b8f4-83ba0758e5ff" />
+
+   3. Automatització amb Cron
+
+      Per no haver d'executar l'script manualment, fem servir el fitxer /etc/crontab. Hem programat una tasca perquè el sistema executi l'script copies.sh automàticament cada dia 9 del mes a les 13:35h        sota l'usuari root
+
+| Pas | Captura d'Automatització Cron |
+| :--- | :--- |
+| **1** | <img width="1044" height="436" alt="2025-12-09_13-16" src="https://github.com/user-attachments/assets/dd30de06-631e-471e-934a-3b262a08b0a7" /> |
+| **2** | <img width="1070" height="445" alt="2025-12-09_13-17" src="https://github.com/user-attachments/assets/24f1ecd3-8281-4d34-a3a3-b59b3e955c60" /> |
+| **3** | <img width="1042" height="455" alt="2025-12-09_13-30" src="https://github.com/user-attachments/assets/09082995-0295-4013-8b49-1458568ff07f" /> |
       
-6. Teoria Automatització scripts, cron anacron
+  4. Monitorització i jerarquia de processos
+     Finalment, documentem la gestió de processos del sistema:
 
-7. Pràctica automatització
-    1. cron
-    2. anacron
----
+    Utilitzem ps aux per veure tots els processos en execució (incloent-hi el procés pare /sbin/init amb PID 1).
 
+    Utilitzem pstree per visualitzar de forma gràfica la jerarquia de processos de l'usuari.
+
+    Apliquem un filtre amb grep per localitzar específicament els processos relacionats amb la terminal (gnome-terminal)
+
+| Pas | Captura del Processos |
+| :--- | :--- |
+| **1** | <img width="778" height="68" alt="2025-12-02_13-13" src="https://github.com/user-attachments/assets/0db2aa51-89f9-4061-8af9-b2218455eac8" /> |
+| **2** | <img width="772" height="511" alt="2025-12-02_13-09" src="https://github.com/user-attachments/assets/a7a6acd4-9442-444f-b9a7-948673483a1c" /> |
+| **3** | <img width="1332" height="464" alt="2025-12-02_13-11" src="https://github.com/user-attachments/assets/b48829c8-52ef-4bc0-b5a7-74c5f1d00c5e" /> |
+
+
+
+
+      
 ##  5. Quotes d'usuari
