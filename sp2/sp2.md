@@ -501,3 +501,67 @@ A diferència de les altres dues, dd no entén de "fitxers" en el sentit tradici
 
       
 ##  5. Quotes d'usuari
+
+1. Instal·lació i Preparació de l'Usuari
+
+Instal·lació de Quota: S'ha instal·lat el paquet quota mitjançant el gestor de paquets apt per disposar de les eines de control d'espai.
+
+<img width="832" height="388" alt="2025-12-15_11-54" src="https://github.com/user-attachments/assets/e52faecb-5804-40a3-aeef-151b7218a564" />
+
+Creació de l'usuari: S'ha creat un usuari anomenat prova amb la comanda adduser per testejar les restriccions de disc de manera aïllada.
+
+<img width="573" height="349" alt="2025-12-15_12-16_1" src="https://github.com/user-attachments/assets/8666c120-7b3e-49c7-84f9-ee3bf242e66b" />
+
+2. Configuració del Sistema de Fitxers
+
+Creació del directori: S'ha creat el directori /mnt/dades_usuari per servir com a punt de muntatge de la unitat.
+<img width="437" height="68" alt="2025-12-15_12-07" src="https://github.com/user-attachments/assets/bf0dd865-4bb6-4790-a9da-9c12f06f632b" />
+
+Edició de l'fstab: S'ha modificat el fitxer /etc/fstab per incloure les opcions usrquota i grpquota al dispositiu /dev/sdc1, permetent així que el sistema gestioni quotes en aquesta partició.
+
+<img width="1017" height="268" alt="2025-12-15_12-08" src="https://github.com/user-attachments/assets/70bfa774-8c8a-493a-975f-d7c780e79d22" />
+
+
+Verificació del muntatge: S'ha utilitzat df -T per confirmar que la partició està correctament muntada i llesta per al seu ús.
+
+<img width="691" height="230" alt="2025-12-15_12-16" src="https://github.com/user-attachments/assets/cf6bea43-6dde-4b4e-a653-c099c5e9022b" />
+
+3. Gestió i Activació de Quotes
+
+Chequeig inicial: Mitjançant quotacheck, el sistema escaneja el disc per crear els fitxers de control aquota.user i aquota.group.
+
+<img width="968" height="223" alt="2025-12-15_12-19" src="https://github.com/user-attachments/assets/4b580316-7ff8-4d29-92cd-a8c7ce361a49" />
+
+Activació: S'han utilitzat les comandes quotaon i quotaoff per activar o desactivar manualment la vigilància de les quotes en el punt de muntatge.
+
+<img width="635" height="63" alt="2025-12-15_12-39" src="https://github.com/user-attachments/assets/b6d60a8d-80ed-4497-b493-5e27b74c583b" />
+
+
+Assignació de límits: A través de edquota, s'han definit límits de 1024 (soft) i 2048 (hard) blocs per a l'usuari prova
+
+4. Monitorització i Proves de Càrrega
+
+Visualització de l'estat: S'utilitzen quota -u prova i repquota per generar informes detallats sobre l'ús actual de disc i els límits establerts.
+| Pas | Captura |
+| :--- | :--- |
+| **Configuració dels límits (Soft: 1024, Hard: 2048) mitjançant l'editor de edquota** | <img width="1027" height="98" alt="2025-12-15_12-43" src="https://github.com/user-attachments/assets/1f74bf3c-ccc3-44bb-ba88-e8f7afa58a0e" /> |
+| **Consulta de l'estat de la quota amb quota -u prova i l'informe general amb repquota** | <img width="642" height="186" alt="2025-12-15_12-41" src="https://github.com/user-attachments/assets/11c0e44b-2fc0-4ee6-819c-647ed09b6cba" /> |
+
+Prova de funcionament: Amb l'usuari prova, s'han executat comandes dd per escriure fitxers de mida controlada i verificar que el sistema impedeix sobrepassar el límit d'espai definit.
+
+<img width="759" height="193" alt="2025-12-15_12-46" src="https://github.com/user-attachments/assets/79410755-b775-4581-b24c-c8ca1f93ccaa" />
+
+
+He executat la comanda quota -u prova per verificar l'estat actual del meu usuari de proves. He comprovat que ja he superat el límit suau (soft limit) de 1024 blocs, ja que estic utilitzant 1600. A causa d'això, el sistema m'ha marcat l'ús amb un asterisc i m'ha activat un període de gràcia de 6 dies per posar les dades en ordre.
+
+<img width="721" height="98" alt="2025-12-15_12-48" src="https://github.com/user-attachments/assets/ef7caf8b-f130-498b-8c5e-e74fcbffb452" />
+
+He fet servir la comanda repquota /dev/sdc1 per obtenir un informe general del sistema com a administrador. Aquí puc veure clarament la comparativa de tots els límits: l'usuari "prova" apareix amb el símbol +, indicant que ha excedit la quota de blocs, i puc monitorar que encara es troba entre el límit suau (1024) i el límit dur (2048).
+
+<img width="762" height="209" alt="2025-12-15_12-47" src="https://github.com/user-attachments/assets/cac92c3c-b4df-441b-b143-db17ae10129a" />
+
+Finalment, he desactivat les quotes amb la comanda quotaoff sobre el punt de muntatge /mnt/dades_usuari. Després, he entrat com a usuari "prova" i he creat un fitxer de 800 KB utilitzant dd. He pogut confirmar que l'escriptura s'ha realitzat sense problemes, ja que, en haver desactivat el control de quotes, el sistema ja no m'aplica cap restricció d'espai
+
+<img width="765" height="131" alt="2025-12-15_12-51" src="https://github.com/user-attachments/assets/d1136ea2-6d26-45b2-b7e3-35af922b590b" />
+
+
