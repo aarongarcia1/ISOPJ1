@@ -95,12 +95,94 @@ Farem un slapcat altra vegada per veure que s'ha guardat la informació que hem 
 Per alimentar i estructurar el nostre directori, utilitzem l'eina ldapadd per carregar fitxers de dades en format LDIF. En aquesta fase, s'executa la comanda de forma seqüencial per crear la jerarquia del domini dc=aaron,dc=cat. Primer, s'insereix la Unitat Organitzativa (ou=users) mitjançant el fitxer uo.ldif per definir la "branca" on viuran els objectes. Seguidament, es dona d'alta l'usuari alu1 amb el fitxer usu.ldif i, finalment, es crea el grup d'alumnes amb grup.ldif. Durant tot el procés, s'utilitza el paràmetre -D per autenticar-nos com a administrador (cn=admin), el paràmetre -W perquè el sistema ens demani la contrasenya de forma segura, i -x per utilitzar autenticació simple, assegurant així que tota l'estructura d'objectes quedi correctament integrada en la base de dades del servidor.
 
 <img width="962" height="206" alt="2026-01-12_12-41" src="https://github.com/user-attachments/assets/c4eadef3-4116-40ab-8a8c-1ab99b635f0b" />
-
+<br></br>
 
 **CLIENT**
 
+1. Instal·lació de paquets necessaris
+El primer pas és instal·lar les llibreries i serveis que permeten la comunicació amb el servidor LDAP i la memòria cau de noms:
+
+apt install libnss-ldap libpam-ldap nscd -y
+
+  - libnss-ldap: Permet que el sistema busqui usuaris i grups a la base de dades LDAP.
+  - libpam-ldap: Proporciona el mòdul d'autenticació PAM per a LDAP.
+  - nscd: Servei de memòria cau per accelerar les consultes de noms.
+<img width="731" height="23" alt="2026-01-12_13-00" src="https://github.com/user-attachments/assets/4663372a-8f66-42df-81a9-cbc35f0556e1" />
+
+
+2. Configuració del paquet ldap-auth-config
+Durant la instal·lació (o executant dpkg-reconfigure ldap-auth-config), apareixerà un assistent per configurar la connexió:
+
+URI del servidor LDAP: Indiquem l'adreça IP o el nom de domini del servidor. En el meu cas, utilitzo l'adreça IP per evitar problemes amb la resolució de noms: ldap://10.0.2.15.
+
+
+<img width="1648" height="181" alt="2026-01-12_13-01" src="https://github.com/user-attachments/assets/d8b0397b-64fc-47c0-8c50-ddf904452ddd" />
+
+
+Base de cerca (Search Base): Definim el nom distingit (DN) on es faran les cerques d'usuaris: dc=aaron,dc=cat.
+
+
+<img width="692" height="198" alt="2026-01-12_13-01_1" src="https://github.com/user-attachments/assets/4e3742c0-2b0b-4f2d-9fa9-0c8f835577a2" />
+
+
+Versió del protocol: Seleccionem la versió 3, que és l'estàndard actual i més segur.
+<img width="673" height="219" alt="2026-01-12_13-02" src="https://github.com/user-attachments/assets/70486d33-926c-4d6f-8609-cab50cedfb61" />
+
+3. Gestió de permisos i comptes d'administrador
+Continuant amb l'assistent, configurem com el sistema local interactuarà amb la base de dades LDAP:
+
+Base de dades local com a admin: Marquem que Sí per permetre que les utilitats de contrasenyes es comportin de manera similar a les locals.
+
+<img width="666" height="259" alt="2026-01-12_13-02_1" src="https://github.com/user-attachments/assets/2ab01327-a2a8-4aa6-a383-3b72fdcea80e" />
+
+
+Requerir login per a la base de dades: En aquest cas, he marcat que Sí, ja que el meu servidor no permet consultes anònimes.
+
+<img width="619" height="191" alt="2026-01-12_13-02_2" src="https://github.com/user-attachments/assets/172ceeed-b3ce-4084-83de-7cb59c932109" />
+
+Compte de root per a LDAP: Definim el compte amb privilegis per fer canvis (com modificar contrasenyes): cn=admin,dc=aaron,dc=cat.
+
+<img width="542" height="189" alt="2026-01-12_13-03" src="https://github.com/user-attachments/assets/c8411926-809c-4524-aaf4-54ace018e3fd" />
+
+Contrasenya de l'administrador: Introduïm la credencial corresponent que es guardarà de forma segura a /etc/ldap.secret.
+
+<img width="680" height="258" alt="2026-01-12_13-03_1" src="https://github.com/user-attachments/assets/3639facc-2a6b-4554-bea5-1b864bbfd7c0" />
 
 
 
+4. Verificació i reconfiguració
+Si en qualsevol moment ens equivoquem o necessitem canviar algun paràmetre de la configuració guiada, podem tornar a llançar l'assistent amb la següent comanda:
 
-Borrem el use_authok
+dpkg-reconfigure ldap-auth-config
+
+<img width="645" height="23" alt="2026-01-12_13-05" src="https://github.com/user-attachments/assets/943bb525-ffcc-4306-ac51-7cdc34f8c48c" />
+
+| Pas | Captura Base |
+| :--- | :--- |
+| Marcarem que si per a que el sistema configure automáticament la conexió a un servidor de usuaris (LDAP) | <img width="852" height="137" alt="2026-01-12_13-07" src="https://github.com/user-attachments/assets/046ad874-5160-4996-8db8-dfb442ea904c" /> |
+| Utilitzarem md5 | <img width="1773" height="533" alt="2026-01-12_13-08" src="https://github.com/user-attachments/assets/96f5a9a8-991d-4fe4-b731-19bd856c934e" /> |
+
+Establirem l'ordre de prioritat que seguirà el sistema operatiu per a la cerca i resolució de noms d'usuaris, grups i contrasenyes. En afegir el paràmetre ldap al principi de les línies passwd, group, shadow i gshadow, s'està indicant al sistema que consulti primer el servidor LDAP abans de buscar en els fitxers locals del propi equip (files)
+
+<img width="1058" height="217" alt="2026-01-12_13-10" src="https://github.com/user-attachments/assets/a64fd6ce-8840-4fc3-a5b8-f13d6ce14a62" />
+
+Modificarem el fitxer /etc/pam.d/common-session per habilitar la creació automàtica de directoris de treball. Mitjançant la línia pam_mkhomedir.so, el sistema genera la carpeta personal de l'usuari a /home en el moment del seu primer inici de sessió, utilitzant /etc/skel com a plantilla. Això és imprescindible en entorns LDAP, ja que garanteix que els usuaris de xarxa tinguin un espai local on desar els seus fitxers sense necessitat de crear-lo manualment per a cada persona
+
+<img width="1153" height="640" alt="2026-01-12_13-14" src="https://github.com/user-attachments/assets/ad2ac310-0575-43b5-ba32-b9eb156ea48c" />
+
+Seguidament borrarem tots els use_authok del archiu **common-password**
+
+<img width="1083" height="695" alt="2026-01-12_13-15" src="https://github.com/user-attachments/assets/d33d333f-6207-4380-be47-3f0b397a6c1c" />
+
+Habilitarem l'inici de sessió manual a la pantalla de benvinguda de Linux. En afegir la línia greeter-show-manual-login=true, es permet que qualsevol usuari del servidor LDAP pugui escriure el seu nom i contrasenya directament, ja que aquests usuaris de xarxa no apareixen automàticament al llistat d'usuaris locals del sistema
+
+<img width="696" height="83" alt="2026-01-12_13-16" src="https://github.com/user-attachments/assets/9fac6a79-e7a2-4e3c-88c8-667798385424" />
+
+L'execució de getent passwd | grep alu1 confirma que el sistema reconeix correctament l'usuari de xarxa i les seves dades, mentre que l'ordre su alu1 demostra que l'accés és funcional i que l'usuari pot iniciar sessió al sistema amb èxit. Aquest pas final valida que la integració entre el servidor i el client s'ha completat correctament
+
+<img width="579" height="78" alt="2026-01-12_13-17" src="https://github.com/user-attachments/assets/3059d1ca-2ef1-4a18-89f0-d2a3292ac0f2" />
+
+Fianalment farem un whoami per saber qui som, i ens mourem a la carpeta home per veure la carpeta **alu1**
+
+<img width="472" height="175" alt="2026-01-12_13-22" src="https://github.com/user-attachments/assets/b0d1ac31-3d8b-4371-b67b-b3e1c08eef4d" />
+
