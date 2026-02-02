@@ -182,7 +182,7 @@ L'execució de getent passwd | grep alu1 confirma que el sistema reconeix correc
 
 <img width="579" height="78" alt="2026-01-12_13-17" src="https://github.com/user-attachments/assets/3059d1ca-2ef1-4a18-89f0-d2a3292ac0f2" />
 
-Fianalment farem un whoami per saber qui som, i ens mourem a la carpeta home per veure la carpeta **alu1**
+Finalment farem un whoami per saber qui som, i ens mourem a la carpeta home per veure la carpeta **alu1**
 
 <img width="472" height="175" alt="2026-01-12_13-22" src="https://github.com/user-attachments/assets/b0d1ac31-3d8b-4371-b67b-b3e1c08eef4d" />
 
