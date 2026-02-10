@@ -2,19 +2,21 @@
   INSTAL·LACIÓ DOMINI LDAP I UNIR CLIENT AL DOMINI
 ---
 
-1. El Servidor
+- **1. El Servidor:** 
   - Un servidor és un ordinador configurat per oferir recursos, dades o serveis a altres ordinadors (anomenats clients) a través d'una xarxa.
   - Funció principal: Centralitzar la gestió de fitxers, bases de dades o usuaris.
   - Diferència clau: A diferència d'un PC normal, està optimitzat per a la fiabilitat i el treball multiusuari.
 
-2. La clau de la IP Fixa
-Perquè un servidor funcioni correctament en una infraestructura de domini, necessita obligatòriament una IP fixa.
-Si el servidor canviés de direcció IP (IP dinàmica), els clients no podrien trobar-lo per iniciar sessió o demanar serveis, provocant la caiguda de tota la xarxa.
+- **2. La clau de la IP Fixa:**
 
-3. L'Analogia de l'Estructura Lògica
-En sistemes com Active Directory, l'organització es divideix de forma jeràrquica utilitzant conceptes de la natura:
+  - Perquè un servidor funcioni correctament en una infraestructura de domini, necessita obligatòriament una IP fixa.
+  - Si el servidor canviés de direcció IP (IP dinàmica), els clients no podrien trobar-lo per iniciar sessió o demanar serveis, provocant la caiguda de tota la xarxa.
 
-El Bosc
+- **3. L'Analogia de l'Estructura Lògica:**
+
+  - En sistemes com Active Directory, l'organització es divideix de forma jeràrquica utilitzant conceptes de la natura:
+
+- **4. El Bosc:**
   - És el contenidor de nivell més alt.
   - Inclou tots els dominis de l'organització.
   - Tots els elements del bosc comparteixen el mateix esquema (les regles del joc).
@@ -29,7 +31,7 @@ Les Branques (Unitats Organitzatives - OU)
   - Permeten aplicar polítiques de seguretat específiques a cada grup.
 
 
-**SERVER**
+## SERVER
 
 Creem la ip fixa mitjançant interficie
 
@@ -97,7 +99,7 @@ Per alimentar i estructurar el nostre directori, utilitzem l'eina ldapadd per ca
 <img width="962" height="206" alt="2026-01-12_12-41" src="https://github.com/user-attachments/assets/c4eadef3-4116-40ab-8a8c-1ab99b635f0b" />
 <br></br>
 
-**CLIENT**
+## CLIENT
 
 1. Instal·lació de paquets necessaris
 El primer pas és instal·lar les llibreries i serveis que permeten la comunicació amb el servidor LDAP i la memòria cau de noms:
@@ -185,4 +187,60 @@ L'execució de getent passwd | grep alu1 confirma que el sistema reconeix correc
 Finalment farem un whoami per saber qui som, i ens mourem a la carpeta home per veure la carpeta **alu1**
 
 <img width="472" height="175" alt="2026-01-12_13-22" src="https://github.com/user-attachments/assets/b0d1ac31-3d8b-4371-b67b-b3e1c08eef4d" />
+
+
+
+
+## Servidor Samba
+
+### Server
+
+Instal·larem samba
+<img width="450" height="73" alt="2026-01-26_11-50" src="https://github.com/user-attachments/assets/92b41e8e-229d-4ed7-8ac9-29f18a2fbf6b" />
+
+## 1. Preparació del Sistema de Fitxers
+S'ha creat la infraestructura de carpetes al directori arrel i s'han ajustat els permisos de Linux per evitar conflictes amb el servei de xarxa.
+<img width="605" height="373" alt="2026-01-26_11-54" src="https://github.com/user-attachments/assets/3c4cf88c-957c-47ea-a068-513b9b3439ac" />
+
+## 2. Gestió d'Usuaris i Grups
+  - S'han definit les identitats que tindran accés al servei Samba.
+  - Creació d'usuaris del sistema: S'han creat els usuaris blau, roig i groc amb el paràmetre -s /sbin/nologin. Això garanteix que no puguin entrar a la terminal del servidor, augmentant la seguretat.
+  - Configuració de grups: S'ha creat el grup color i s'hi han afegit els usuaris groc i roig.
+  - Alta a Samba: S'ha utilitzat smbpasswd -a per a cada usuari. Aquest pas és imprescindible perquè Samba utilitza la seva pròpia base de dades de contrasenyes, independent de la del sistema.
+<img width="640" height="420" alt="2026-01-26_11-56" src="https://github.com/user-attachments/assets/0324f0cb-1724-4ac9-9bcc-0f722680e313" />
+
+## 3. Configuració del Recurs Compartit (Samba)
+
+S'ha editat el fitxer /etc/samba/smb.conf per definir les regles del recurs anomenat [proves].
+
+Paràmetres configurats:
+
+  - path = /proves: Ruta de la carpeta al servidor.
+  - guest ok = yes: Permet que usuaris sense compte es connectin com a convidats.
+  - read list: Llista d'usuaris que només poden llegir (blau, el grup @color i guest).
+  - write list: Usuaris amb permís d'escriptura (blau i guest).
+  - invalid users = roig: Prohibició explícita d'accés per a l'usuari roig, que invalida qualsevol altre permís que pogués tenir.
+<img width="496" height="192" alt="2026-01-26_12-04" src="https://github.com/user-attachments/assets/3fbcdf0c-b594-46ba-ace0-3c5b27871659" />
+
+
+## 4. Aplicació i Reinici del Servei
+Finalment, per tal que els canvis a la configuració siguin efectius, s'ha procedit a reiniciar els serveis:
+  - Comanda: systemctl restart smbd nmbd.
+Això reinicia tant el servei de transferència de fitxers (smbd) com el de resolució de noms en xarxa de Windows (nmbd).
+<img width="436" height="56" alt="2026-01-26_12-06" src="https://github.com/user-attachments/assets/d1db344f-e436-47f6-bbbb-1eae4f776f9b" />
+
+
+### Client
+
+## 1. Instal·lacio smbclient
+
+Instal·larem el smbclient a la nostra maquina client
+
+<img width="539" height="74" alt="2026-01-26_12-29" src="https://github.com/user-attachments/assets/16834b93-ed9e-443a-9216-ca1f2b47d1bb" />
+
+Farem un ip a per veure la ip del client, i farem un ping al servidor el meu te la ip **10.0.2.15**
+<img width="879" height="403" alt="2026-01-26_12-32" src="https://github.com/user-attachments/assets/5716e34f-d56f-46ac-ab95-d9ea897aba93" />
+
+Anirem als archius i farem un smb://10.0.2.15 **la ip del server** /proves/, amb aixo en podrem connectar
+<img width="864" height="520" alt="2026-01-26_12-37" src="https://github.com/user-attachments/assets/63b0769d-8fd2-4ea9-99eb-d456f01f6e47" />
 
