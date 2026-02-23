@@ -279,7 +279,7 @@ I crearem l'archiu hola
 <img width="380" height="65" alt="2026-02-10_13-00" src="https://github.com/user-attachments/assets/a4f4da81-4a7e-4bc8-8a20-59ad5c6de1c2" />
 
 
-## Exercici 2 NFS
+## NFS AMB LDAP
 
 Creem la carpeta **homes** i dins d'ella creem la de **marcel**
 <img width="432" height="153" alt="2026-02-10_13-00" src="https://github.com/user-attachments/assets/9716b695-ca8c-4b50-b46b-08983277f335" />
@@ -305,3 +305,18 @@ Entrarem al client i desde el server fareem un ls de la carpeta **marcel** i veu
 
 Desde el client fem un whoami per veure qui som i un ls per llistar el directoris
 <img width="457" height="118" alt="2026-02-10_14-20" src="https://github.com/user-attachments/assets/50d266ea-3e4b-455a-817c-6d0b8f88f7bb" />
+
+## NFS AMB WINDOWS
+
+Instal·larem el servei nfs
+<img width="585" height="462" alt="2026-02-23_10-47" src="https://github.com/user-attachments/assets/80f60e7d-29fa-4716-9e21-bdbaf9ab6846" />
+
+Anirem a archius i a red, alli ficarem, connectarse a unidad de red
+<img width="335" height="312" alt="2026-02-23_11-51" src="https://github.com/user-attachments/assets/10cb0c9b-5f67-4ced-b4ad-f5258d1debde" />
+
+Ficarem la ip i la ruta de la carpeta
+<img width="609" height="449" alt="2026-02-23_11-52" src="https://github.com/user-attachments/assets/42a974a2-e6f1-4e4c-b7e3-3b73f2972da7" />
+
+
+
+<img width="758" height="331" alt="image" src="https://github.com/user-attachments/assets/b3fb9cfc-a3a7-482d-a137-e6b10019a7a8" />
