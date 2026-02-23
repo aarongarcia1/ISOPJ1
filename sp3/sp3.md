@@ -239,9 +239,11 @@ Instal·larem el smbclient a la nostra maquina client
 <img width="539" height="74" alt="2026-01-26_12-29" src="https://github.com/user-attachments/assets/16834b93-ed9e-443a-9216-ca1f2b47d1bb" />
 
 Farem un ip a per veure la ip del client, i farem un ping al servidor el meu te la ip **10.0.2.15**
+
 <img width="879" height="403" alt="2026-01-26_12-32" src="https://github.com/user-attachments/assets/5716e34f-d56f-46ac-ab95-d9ea897aba93" />
 
 Anirem als archius i farem un smb://10.0.2.15 **la ip del server** /proves/, amb aixo en podrem connectar
+
 <img width="864" height="520" alt="2026-01-26_12-37" src="https://github.com/user-attachments/assets/63b0769d-8fd2-4ea9-99eb-d456f01f6e47" />
 
 ### Servidor NFS
@@ -249,74 +251,93 @@ Anirem als archius i farem un smb://10.0.2.15 **la ip del server** /proves/, amb
 ## Client
 
 Instal·larem el nfs-common i el rpcbind
+
 <img width="709" height="308" alt="2026-02-10_13-03" src="https://github.com/user-attachments/assets/c3687fd8-13f9-4f51-83ac-857f7eb54602" />
 
 Crearem la carpeta de prova i donarem permisos
+
 <img width="587" height="261" alt="2026-02-10_13-09" src="https://github.com/user-attachments/assets/ff7349fc-597a-4fef-aa01-39e234c433d3" />
 
 Configurarem el muntatge automàtic d'una unitat de xarxa en el meu sistema Linux mitjançant l'edició del fitxer /etc/fstab. Amb la línia que he afegit, estic indicant al sistema que connecti permanentment la carpeta remota 1exercici (ubicada a la IP 10.0.2.15) amb el meu directori local /prova utilitzant el protocol NFS. He aplicat paràmetres específics com bg i nfsvers=3 per assegurar que, si el servidor no està disponible en engegar l'equip, el sistema no es bloquegi i l'arrencada continuï amb normalitat en segon pla
+
 <img width="1010" height="273" alt="2026-02-10_13-23" src="https://github.com/user-attachments/assets/245b6011-9a43-470b-8e19-21a1e7737d3a" />
 
 Farem un ls de prova i veurem l'archiu hola
+
 <img width="380" height="87" alt="2026-02-10_13-28" src="https://github.com/user-attachments/assets/17ae9cd8-9af1-4094-a5e6-a544d3a4bdc8" />
 
 
 ## Servidor
 
 Instal·larem el nfs-kernel-server
+
 <img width="628" height="166" alt="2026-02-10_12-51" src="https://github.com/user-attachments/assets/d1b0d639-cd65-43a1-8b87-fbabff74f728" />
 
 Crearem la carpeta 1exercici i donarem permisos
+
 <img width="626" height="136" alt="2026-02-10_12-52" src="https://github.com/user-attachments/assets/6ae742ee-3cf3-48b6-923d-2843c3c1f566" />
 
 Estic compartint una carpeta del meu equip perquè altres usuaris de la xarxa hi puguin accedir. He editat el fitxer /etc/exports per exportar el directori /1exercici. Amb el símbol *, estic donant permís a qualsevol equip de la xarxa per connectar-s'hi, i amb els paràmetres (rw,sync,no_subtree_check) els permeto llegir i escriure dades de manera segura
+
 <img width="488" height="222" alt="2026-02-10_12-57" src="https://github.com/user-attachments/assets/78399f82-32ed-4c00-be08-f792e74235ee" />
 
 Fem un status del servei
+
 <img width="741" height="158" alt="2026-02-10_12-59" src="https://github.com/user-attachments/assets/42d72327-76ae-4b0e-99e3-e04753e804d4" />
 
 I crearem l'archiu hola
+
 <img width="380" height="65" alt="2026-02-10_13-00" src="https://github.com/user-attachments/assets/a4f4da81-4a7e-4bc8-8a20-59ad5c6de1c2" />
 
 
 ## NFS AMB LDAP
 
 Creem la carpeta **homes** i dins d'ella creem la de **marcel**
+
 <img width="432" height="153" alt="2026-02-10_13-00" src="https://github.com/user-attachments/assets/9716b695-ca8c-4b50-b46b-08983277f335" />
 
 En aquest pas, estic ampliant els directoris compartits del meu servidor NFS. He afegit una segona línia al fitxer /etc/exports per exportar també la carpeta /homes. Igual que amb la carpeta anterior, he configurat el permís per a qualsevol equip de la xarxa (*) amb capacitats de lectura i escriptura (rw). Això em permet centralitzar els directoris d'usuari o dades comunes en aquest servidor perquè siguin accessibles des de diferents clients simultàniament
+
 <img width="1017" height="257" alt="2026-02-10_13-52" src="https://github.com/user-attachments/assets/780066ed-ca07-443e-88b6-1d4325cb8812" />
 
 
 He configurat un entorn servidor-client NFS per compartir fitxers en xarxa de manera permanent. En el servidor, he editat el fitxer /etc/exports per compartir els directoris /1exercici i /homes amb permisos de lectura/escriptura per a qualsevol equip de la xarxa. Paral·lelament, en l'equip client, he configurat el muntatge automàtic en el fitxer /etc/fstab perquè aquests recursos remots (IP 10.0.2.15) s'enllacin amb els directoris locals /prova i /homes en iniciar el sistema. Per optimitzar el funcionament, he utilitzat paràmetres com bg i nfsvers=3, assegurant així que el client no es bloquegi si el servidor no està disponible i garantint la màxima compatibilitat entre ambdues màquines
+
 <img width="1013" height="292" alt="2026-02-10_13-58" src="https://github.com/user-attachments/assets/38cf7a31-f049-4679-90cd-b4584d294101" />
 
 
 Entrarem dins de l'archiu usu.ldif i canviarem el uid a marcel, el uid number, i la contrasenya
+
 <img width="997" height="399" alt="2026-02-10_14-01" src="https://github.com/user-attachments/assets/0fdb842c-93d1-46e5-aaff-e482276a00e5" />
 
 
 Muntarem amb el ldap add a marcel
+
 <img width="878" height="316" alt="2026-02-10_14-05" src="https://github.com/user-attachments/assets/5f389982-4596-4404-b9c9-85e96fb55ec4" />
 
 Entrarem al client i desde el server fareem un ls de la carpeta **marcel** i veurem que tenim les carpetes predeterminades
+
 <img width="746" height="80" alt="2026-02-10_14-19" src="https://github.com/user-attachments/assets/5e37daee-f7cf-400c-8f99-c2ff77903ff6" />
 
 
 Desde el client fem un whoami per veure qui som i un ls per llistar el directoris
+
 <img width="457" height="118" alt="2026-02-10_14-20" src="https://github.com/user-attachments/assets/50d266ea-3e4b-455a-817c-6d0b8f88f7bb" />
 
 ## NFS AMB WINDOWS
 
 Instal·larem el servei nfs
+
 <img width="585" height="462" alt="2026-02-23_10-47" src="https://github.com/user-attachments/assets/80f60e7d-29fa-4716-9e21-bdbaf9ab6846" />
 
 Anirem a archius i a red, alli ficarem, connectarse a unidad de red
+
 <img width="335" height="312" alt="2026-02-23_11-51" src="https://github.com/user-attachments/assets/10cb0c9b-5f67-4ced-b4ad-f5258d1debde" />
 
 Ficarem la ip i la ruta de la carpeta
+
 <img width="609" height="449" alt="2026-02-23_11-52" src="https://github.com/user-attachments/assets/42a974a2-e6f1-4e4c-b7e3-3b73f2972da7" />
 
-
+Verifiquem
 
 <img width="758" height="331" alt="image" src="https://github.com/user-attachments/assets/b3fb9cfc-a3a7-482d-a137-e6b10019a7a8" />
