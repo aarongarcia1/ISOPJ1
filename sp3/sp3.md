@@ -284,6 +284,24 @@ I crearem l'archiu hola
 Creem la carpeta **homes** i dins d'ella creem la de **marcel**
 <img width="432" height="153" alt="2026-02-10_13-00" src="https://github.com/user-attachments/assets/9716b695-ca8c-4b50-b46b-08983277f335" />
 
+En aquest pas, estic ampliant els directoris compartits del meu servidor NFS. He afegit una segona línia al fitxer /etc/exports per exportar també la carpeta /homes. Igual que amb la carpeta anterior, he configurat el permís per a qualsevol equip de la xarxa (*) amb capacitats de lectura i escriptura (rw). Això em permet centralitzar els directoris d'usuari o dades comunes en aquest servidor perquè siguin accessibles des de diferents clients simultàniament
+<img width="1017" height="257" alt="2026-02-10_13-52" src="https://github.com/user-attachments/assets/780066ed-ca07-443e-88b6-1d4325cb8812" />
 
 
+He configurat un entorn servidor-client NFS per compartir fitxers en xarxa de manera permanent. En el servidor, he editat el fitxer /etc/exports per compartir els directoris /1exercici i /homes amb permisos de lectura/escriptura per a qualsevol equip de la xarxa. Paral·lelament, en l'equip client, he configurat el muntatge automàtic en el fitxer /etc/fstab perquè aquests recursos remots (IP 10.0.2.15) s'enllacin amb els directoris locals /prova i /homes en iniciar el sistema. Per optimitzar el funcionament, he utilitzat paràmetres com bg i nfsvers=3, assegurant així que el client no es bloquegi si el servidor no està disponible i garantint la màxima compatibilitat entre ambdues màquines
+<img width="1013" height="292" alt="2026-02-10_13-58" src="https://github.com/user-attachments/assets/38cf7a31-f049-4679-90cd-b4584d294101" />
 
+
+Entrarem dins de l'archiu usu.ldif i canviarem el uid a marcel, el uid number, i la contrasenya
+<img width="997" height="399" alt="2026-02-10_14-01" src="https://github.com/user-attachments/assets/0fdb842c-93d1-46e5-aaff-e482276a00e5" />
+
+
+Muntarem amb el ldap add a marcel
+<img width="878" height="316" alt="2026-02-10_14-05" src="https://github.com/user-attachments/assets/5f389982-4596-4404-b9c9-85e96fb55ec4" />
+
+Entrarem al client i desde el server fareem un ls de la carpeta **marcel** i veurem que tenim les carpetes predeterminades
+<img width="746" height="80" alt="2026-02-10_14-19" src="https://github.com/user-attachments/assets/5e37daee-f7cf-400c-8f99-c2ff77903ff6" />
+
+
+Desde el client fem un whoami per veure qui som i un ls per llistar el directoris
+<img width="457" height="118" alt="2026-02-10_14-20" src="https://github.com/user-attachments/assets/50d266ea-3e4b-455a-817c-6d0b8f88f7bb" />
