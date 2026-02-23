@@ -244,3 +244,46 @@ Farem un ip a per veure la ip del client, i farem un ping al servidor el meu te 
 Anirem als archius i farem un smb://10.0.2.15 **la ip del server** /proves/, amb aixo en podrem connectar
 <img width="864" height="520" alt="2026-01-26_12-37" src="https://github.com/user-attachments/assets/63b0769d-8fd2-4ea9-99eb-d456f01f6e47" />
 
+### Servidor NFS
+
+## Client
+
+Instal·larem el nfs-common i el rpcbind
+<img width="709" height="308" alt="2026-02-10_13-03" src="https://github.com/user-attachments/assets/c3687fd8-13f9-4f51-83ac-857f7eb54602" />
+
+Crearem la carpeta de prova i donarem permisos
+<img width="587" height="261" alt="2026-02-10_13-09" src="https://github.com/user-attachments/assets/ff7349fc-597a-4fef-aa01-39e234c433d3" />
+
+Configurarem el muntatge automàtic d'una unitat de xarxa en el meu sistema Linux mitjançant l'edició del fitxer /etc/fstab. Amb la línia que he afegit, estic indicant al sistema que connecti permanentment la carpeta remota 1exercici (ubicada a la IP 10.0.2.15) amb el meu directori local /prova utilitzant el protocol NFS. He aplicat paràmetres específics com bg i nfsvers=3 per assegurar que, si el servidor no està disponible en engegar l'equip, el sistema no es bloquegi i l'arrencada continuï amb normalitat en segon pla
+<img width="1010" height="273" alt="2026-02-10_13-23" src="https://github.com/user-attachments/assets/245b6011-9a43-470b-8e19-21a1e7737d3a" />
+
+Farem un ls de prova i veurem l'archiu hola
+<img width="380" height="87" alt="2026-02-10_13-28" src="https://github.com/user-attachments/assets/17ae9cd8-9af1-4094-a5e6-a544d3a4bdc8" />
+
+
+## Servidor
+
+Instal·larem el nfs-kernel-server
+<img width="628" height="166" alt="2026-02-10_12-51" src="https://github.com/user-attachments/assets/d1b0d639-cd65-43a1-8b87-fbabff74f728" />
+
+Crearem la carpeta 1exercici i donarem permisos
+<img width="626" height="136" alt="2026-02-10_12-52" src="https://github.com/user-attachments/assets/6ae742ee-3cf3-48b6-923d-2843c3c1f566" />
+
+Estic compartint una carpeta del meu equip perquè altres usuaris de la xarxa hi puguin accedir. He editat el fitxer /etc/exports per exportar el directori /1exercici. Amb el símbol *, estic donant permís a qualsevol equip de la xarxa per connectar-s'hi, i amb els paràmetres (rw,sync,no_subtree_check) els permeto llegir i escriure dades de manera segura
+<img width="488" height="222" alt="2026-02-10_12-57" src="https://github.com/user-attachments/assets/78399f82-32ed-4c00-be08-f792e74235ee" />
+
+Fem un status del servei
+<img width="741" height="158" alt="2026-02-10_12-59" src="https://github.com/user-attachments/assets/42d72327-76ae-4b0e-99e3-e04753e804d4" />
+
+I crearem l'archiu hola
+<img width="380" height="65" alt="2026-02-10_13-00" src="https://github.com/user-attachments/assets/a4f4da81-4a7e-4bc8-8a20-59ad5c6de1c2" />
+
+
+## Exercici 2 NFS
+
+Creem la carpeta **homes** i dins d'ella creem la de **marcel**
+<img width="432" height="153" alt="2026-02-10_13-00" src="https://github.com/user-attachments/assets/9716b695-ca8c-4b50-b46b-08983277f335" />
+
+
+
+
