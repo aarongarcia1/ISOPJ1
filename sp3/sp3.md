@@ -188,7 +188,23 @@ Finalment farem un whoami per saber qui som, i ens mourem a la carpeta home per 
 
 <img width="472" height="175" alt="2026-01-12_13-22" src="https://github.com/user-attachments/assets/b0d1ac31-3d8b-4371-b67b-b3e1c08eef4d" />
 
+### Interficie Gràfica LDAP
 
+Instal·larem el jxplorer
+
+<img width="871" height="353" alt="2026-02-23_12-11" src="https://github.com/user-attachments/assets/52b052c3-15f2-460a-82cb-cd5290da1976" />
+
+L'iniciarem per la terminal
+
+<img width="704" height="94" alt="2026-02-23_12-11_1" src="https://github.com/user-attachments/assets/e0ddd9ae-519e-4d33-8720-6698a074c579" />
+
+Anirem a file --> Connect
+
+<img width="552" height="290" alt="2026-02-23_12-12" src="https://github.com/user-attachments/assets/8923a7f1-7178-4306-8e68-d1df8e2c5112" />
+
+Introduirem la ip de el servidor a host despres a base DN introduirem el domini gina.cat i a security selecionarem la opcio user+password i introduirem el usuari admin mes el domini i la contrasenya i apretarem OK
+
+<img width="548" height="474" alt="2026-02-23_12-13" src="https://github.com/user-attachments/assets/8ed7b1ad-0366-4197-894c-f8f2c4b3dbb7" />
 
 
 ## Servidor Samba
@@ -341,3 +357,4 @@ Ficarem la ip i la ruta de la carpeta
 Verifiquem
 
 <img width="758" height="331" alt="image" src="https://github.com/user-attachments/assets/b3fb9cfc-a3a7-482d-a137-e6b10019a7a8" />
+
