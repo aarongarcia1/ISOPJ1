@@ -15,7 +15,7 @@ Este repositorio contiene el material del curso de Machine Learning desarrollado
 
 El contenido está bajo licencia [Creative Commons BY-NC-SA 4.0 ES](LICENSE.md).
 
-## Contenido del curso
+## Projecte 1
 
 ### [SP1. Sprint 1: Instal·lació i Configuració Inicial](sp1/sp1.md)  
 ### [SP2. Sprint 2: Instal·lació, Configuració de Programari de Base i Gestió de Fitxers](sp2/sp2.md)  
@@ -26,3 +26,6 @@ El contenido está bajo licencia [Creative Commons BY-NC-SA 4.0 ES](LICENSE.md).
 ### [Relación entre Unidades y Resultados de Aprendizaje (RAs)](ras.md)  
 
 ### [FAQs](faqs/faqs.md)  
+
+## Projecte 2
+### [SP1. Sprint 1: Instal·lació i Configuració Inicial](Projecte2/sp1.md)  
