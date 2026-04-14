@@ -204,6 +204,19 @@
 <img width="348" height="38" alt="19" src="https://github.com/user-attachments/assets/153651fc-cae3-4f4a-9e01-7d0e97850c49" />
 <img width="303" height="217" alt="20" src="https://github.com/user-attachments/assets/f9ffc69d-30f3-418b-88e1-55f8e5d0487b" />
 
+## Pas 33 - Mini interpretació
+
+### tasklist
+
+* **`tasklist`**: Mostra una llista de tots els processos i programes que s'estan executant actualment al sistema.
+
+### ipconfig
+
+* **`ipconfig`**: Mostra la configuració bàsica de xarxa de l'equip (adreça IP, màscara de subxarxa, porta d'enllaç, etc.).
+
+### systeminfo
+
+* **`systeminfo`**: Mostra informació detallada del maquinari i del sistema operatiu (versió de Windows, memòria RAM, processador, temps d'activitat, etc.).
 
 ## Fase 7 - Instal·lació d'aplicacions
 * **Pas 34-36:** Descarregar i instal·lar programes des del navegador (ex: Chrome o VS Code).
