@@ -28,4 +28,4 @@ El contenido está bajo licencia [Creative Commons BY-NC-SA 4.0 ES](LICENSE.md).
 ### [FAQs](faqs/faqs.md)  
 
 ## Projecte 2
-### [SP1. Sprint 1: Instal·lació i Configuració Inicial](Projecte 2/sp1.md)  
+### [SP1. Sprint 1: Instal·lació i Configuració Inicial](Projecte2/sp1.md)  
