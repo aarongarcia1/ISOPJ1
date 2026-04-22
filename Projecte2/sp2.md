@@ -1,8 +1,3 @@
-
----
-title: "SPRINT 2 WINDOWS: DISCS, QUOTES, SCRIPTS, PROCESSOS I ACLs"
----
-
 # Sprint 2 – Windows: Discs, Quotes, Scripts, Processos i ACLs
 
 ---
