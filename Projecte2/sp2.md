@@ -20,7 +20,7 @@ En aquesta captura podem veure que s'ha creat el fitxer `Windows 11 Pro_1.vdi` (
 
 Un cop afegit el disc a VirtualBox, iniciem la màquina virtual amb Windows 11. Per gestionar els discs des de Windows, executem `diskmgmt.msc` (o clic dret al menú d'inici → **Gestió de discs**).
 
-En la captura s'observa que el sistema reconeix el nou **Disc 1** (4,98 GB) amb tot l'espai **No asignat**. Això confirma que Windows l'ha detectat correctament, però encara no s'ha inicialitzat ni creat cap partició.
+En la captura s'observa que el sistema reconeix el nou **Disc 1** (5 GB) amb tot l'espai **No asignat**. Això confirma que Windows l'ha detectat correctament, però encara no s'ha inicialitzat ni creat cap partició.
 
 > ℹ️ Quan un disc és nou, Windows el detecta però cal inicialitzar-lo (triar GPT o MBR) abans de poder-hi crear particions.
 
