@@ -12,7 +12,7 @@ En aquesta captura podem veure que s'ha creat el fitxer `Windows 11 Pro_1.vdi` (
 
 > 💡 Un disc VDI d'ubicació dinàmica ocupa molt poc espai real al host fins que s'hi escriu informació.
 
-![1](imatges-windows/1.png)
+<img width="792" height="438" alt="1" src="https://github.com/user-attachments/assets/e1e01f34-d512-4982-90dc-c039f8dc61dc" />
 
 ---
 
@@ -24,7 +24,7 @@ En la captura s'observa que el sistema reconeix el nou **Disc 1** (4,98 GB) amb 
 
 > ℹ️ Quan un disc és nou, Windows el detecta però cal inicialitzar-lo (triar GPT o MBR) abans de poder-hi crear particions.
 
-![2](imatges-windows/2.png)
+<img width="827" height="562" alt="2" src="https://github.com/user-attachments/assets/16675654-87a5-48c4-add2-1400aa536068" />
 
 ---
 
@@ -34,37 +34,39 @@ En la captura s'observa que el sistema reconeix el nou **Disc 1** (4,98 GB) amb 
 
 Fem clic dret sobre l'espai no asignat del Disc 1 i seleccionem **Nou volum simple…**
 
-![3](imatges-windows/3.png)
+<img width="381" height="209" alt="3" src="https://github.com/user-attachments/assets/b8e39828-cdc6-49f0-84cb-5a06960dee77" />
 
 S'obre l'assistent per crear el volum. Introduïm **3000 MB** (3 GB) com a mida per a la primera partició, deixant la resta per a la segona.
 
-![4](imatges-windows/4.png)
+<img width="498" height="393" alt="4" src="https://github.com/user-attachments/assets/c1f20930-8878-4b9a-bc8d-4b636281fe82" />
 
 Assignem la lletra d'unitat **E:** a aquesta partició perquè sigui accessible des de l'Explorador de Windows.
 
-![5](imatges-windows/5.png)
+<img width="488" height="387" alt="5" src="https://github.com/user-attachments/assets/0f9a2fd4-0470-4bdc-879e-e5717cc45b21" />
+
 
 Formatem la partició amb el sistema de fitxers **NTFS**, que és el format natiu de Windows i l'únic que suporta quotes de disc i permisos ACL avançats. L'etiqueta del volum serà **Dades**.
 
-![6](imatges-windows/6.png)
+<img width="483" height="383" alt="6" src="https://github.com/user-attachments/assets/8a037cc0-4da9-4d64-96ab-bc5d31707bab" />
 
 El resum final de l'assistent mostra tota la configuració seleccionada: 3000 MB, unitat E:, NTFS, etiqueta "Dades". Fem clic a **Finalizar** per crear la partició.
 
-![7](imatges-windows/7.png)
+<img width="495" height="380" alt="7" src="https://github.com/user-attachments/assets/c5e8e057-997a-4da9-a41b-2f46add7b39d" />
 
 #### Crear la partició Portable (FAT32)
 
-Amb l'espai restant del Disc 1 (2,05 GB aproximadament), creem una segona partició. Clic dret → **Nou volum simple…**
+Amb l'espai restant del Disc 1 (2,07 GB aproximadament), creem una segona partició. Clic dret → **Nou volum simple…**
 
-![8](imatges-windows/8.png)
+<img width="708" height="111" alt="8" src="https://github.com/user-attachments/assets/45134e25-6054-44b8-a79d-5d4c0750d457" />
 
-Usem tot l'espai disponible (2102 MB) per a aquesta partició, que simularà un dispositiu portàtil.
 
-![9](imatges-windows/9.png)
+Usem tot l'espai disponible (2117 MB) per a aquesta partició, que simularà un dispositiu portàtil.
+
+<img width="493" height="383" alt="9" src="https://github.com/user-attachments/assets/7934bc06-451a-41ef-b247-255d8e70b213" />
 
 Assignem la lletra **F:** per a la partició Portable.
 
-![10](imatges-windows/10.png)
+<img width="488" height="379" alt="10" src="https://github.com/user-attachments/assets/6d4de20a-6ee0-47dd-b5ef-4bff18dfcf6f" />
 
 Formatem aquesta partició com a **FAT32** amb l'etiqueta **Portable**. FAT32 és compatible amb la majoria de dispositius (càmeres, consoles, etc.) però té la limitació de no poder emmagatzemar fitxers de més de 4 GB.
 
@@ -76,11 +78,11 @@ Formatem aquesta partició com a **FAT32** amb l'etiqueta **Portable**. FAT32 é
 | Compatibilitat      | Windows/Linux | Universal              |
 | Journaling          | ✅ Sí         | ❌ No                  |
 
-![11](imatges-windows/11.png)
+<img width="487" height="376" alt="11" src="https://github.com/user-attachments/assets/d6cb4448-50d0-4703-83de-32d1ba7f76fa" />
 
-El resum final confirma la creació de la partició Portable: 2102 MB, unitat F:, FAT32. Fem clic a **Finalizar**.
+El resum final confirma la creació de la partició Portable: 2117 MB, unitat F:, FAT32. Fem clic a **Finalizar**.
 
-![12](imatges-windows/12.png)
+<img width="487" height="376" alt="12" src="https://github.com/user-attachments/assets/2501d668-fe24-44a7-85a3-c9b43e06d0b8" />
 
 ---
 
@@ -97,12 +99,12 @@ DISKPART> list vol
 
 La captura mostra el resultat complet. Podem confirmar:
 
-- **Disc 0 (40 GB)**: disc principal del sistema amb la partició C: (NTFS, 39 GB).
+- **Disc 0 (50 GB)**: disc principal del sistema amb la partició C: (NTFS, 49 GB).
 - **Disc 1 (5 GB)**: el nou disc amb dues particions:
   - **Partició 2** → Volum 4 · Lletra **E:** · Etiqueta **Dades** · NTFS · 3000 MB ✅
-  - **Partició 3** → Volum 5 · Lletra **F:** · Etiqueta **PORTABLE** · FAT32 · 2102 MB ✅
+  - **Partició 3** → Volum 5 · Lletra **F:** · Etiqueta **PORTABLE** · FAT32 · 2117 MB ✅
 
-![13](imatges-windows/13.png)
+<img width="643" height="488" alt="13" src="https://github.com/user-attachments/assets/00ec8889-ba0d-457c-bf17-c9860d8a0d27" />
 
 ---
 
@@ -112,11 +114,11 @@ La captura mostra el resultat complet. Podem confirmar:
 
 Les **quotes de disc** a Windows permeten limitar l'espai que cada usuari pot usar dins d'una partició NTFS. Per activar-les, obrim l'Explorador de Windows, clic dret sobre la unitat **Dades (E:)** i seleccionem **Propietats**.
 
-![14](imatges-windows/14.png)
+<img width="566" height="399" alt="14" src="https://github.com/user-attachments/assets/9376bd76-87c7-460f-9797-f8fa3a031e86" />
 
 A la finestra de propietats ens dirigim a la pestanya **Cuota** i fem clic a **Mostrar configuració de cuota**.
 
-![15](imatges-windows/15.png)
+<img width="356" height="202" alt="15" src="https://github.com/user-attachments/assets/3f80d4fa-2d2b-47f5-a19e-9ca33f4959ca" />
 
 ---
 
@@ -133,7 +135,7 @@ Dins del panell de configuració de quotes, activem les opcions:
 
 > ⚠️ Amb el limit establert a 300 MB, cap usuari podrà escriure més dades un cop superi aquesta mida. L'advertència a 150 KB és inusualment baixa (seria recomanable posar-la a uns 250 MB), però serveix per il·lustrar el funcionament.
 
-![16](imatges-windows/16.png)
+<img width="357" height="438" alt="16" src="https://github.com/user-attachments/assets/766c4f94-8a52-48da-b984-c2e9a5f40570" />
 
 ---
 
@@ -141,19 +143,20 @@ Dins del panell de configuració de quotes, activem les opcions:
 
 Per crear usuaris locals a Windows, executem `lusrmgr.msc` (Gestió d'usuaris i grups locals) des de la finestra **Executar** (Win + R).
 
-![17](imatges-windows/17.png)
+<img width="391" height="195" alt="17" src="https://github.com/user-attachments/assets/0cc0e944-129d-47ee-b4c3-841aef4abdf7" />
+
 
 Dins de la consola, fem clic dret sobre **Usuaris → Usuari nou…**
 
-![18](imatges-windows/18.png)
+<img width="231" height="153" alt="18" src="https://github.com/user-attachments/assets/b9c520d4-347a-4b82-9e3e-e438134a82fc" />
 
 Creem l'usuari **alumne1** amb la contrasenya corresponent. Activem l'opció **La contrasenya mai expira** per evitar problemes en les proves.
 
-![19](imatges-windows/19.png)
+<img width="405" height="374" alt="19" src="https://github.com/user-attachments/assets/76355425-dada-49ff-81c8-7399e4c5dbe5" />
 
 De la mateixa manera, creem l'usuari **alumne2** amb la mateixa configuració.
 
-![20](imatges-windows/20.png)
+<img width="409" height="372" alt="20" src="https://github.com/user-attachments/assets/64bfb6c5-e300-49e2-bd59-8595024e89ec" />
 
 ---
 
@@ -161,11 +164,11 @@ De la mateixa manera, creem l'usuari **alumne2** amb la mateixa configuració.
 
 Dins de `lusrmgr.msc`, fem clic sobre la carpeta **Grupos** per veure tots els grups existents. Clic dret en un espai buit de la llista → **Grupo nuevo…**
 
-![21](imatges-windows/21.png)
+<img width="490" height="570" alt="21" src="https://github.com/user-attachments/assets/15fc47a9-cefa-4d6c-afd4-f67ed742e245" />
 
 Introduïm el nom del grup **Limitats** i afegim els dos usuaris creats (`alumne1` i `alumne2`) com a membres. Fem clic a **Crear** per finalitzar.
 
-![22](imatges-windows/22.png)
+<img width="407" height="374" alt="22" src="https://github.com/user-attachments/assets/a33b9bb9-6fe2-4672-b40c-2e82af9e7151" />
 
 ---
 
@@ -185,7 +188,8 @@ fsutil file createnew E:\prova5.dat 50000000   → Error 112: Espai insuficient 
 
 La captura mostra clarament com el sistema **nega l'accés** quan l'usuari intenta superar els 300 MB assignats per la quota. L'error **112** és el codi de Windows per "espai en disc insuficient", que en aquest context és provocat artificialment per la quota, no per la mida real del disc.
 
-![24](imatges-windows/24.png)
+<img width="740" height="482" alt="24" src="https://github.com/user-attachments/assets/eb46c528-deff-4297-b3ae-3c1c2e62e508" />
+
 
 ---
 
@@ -195,7 +199,7 @@ La captura mostra clarament com el sistema **nega l'accés** quan l'usuari inten
 
 Des de la configuració de VirtualBox, afegim un **tercer disc** (`Windows 11 Pro_2.vdi`) de 5 GB connectat al port SATA 3. Servirà com a unitat de còpies de seguretat.
 
-![25](imatges-windows/25.png)
+<img width="775" height="346" alt="25" src="https://github.com/user-attachments/assets/62919f07-28a9-48ac-8d97-9935b4986c0b" />
 
 Un cop dins de Windows, obrim la **Gestió de discs** i localitzem el nou **Disc 2** (4,98 GB, no asignat). Clic dret → **Nou volum simple…**
 
