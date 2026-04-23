@@ -6,9 +6,9 @@
 
 ### Pas 1 – Afegir un nou disc virtual a la màquina virtual
 
-Per ampliar l'emmagatzematge de la màquina virtual cal afegir un nou disc des de la configuració de VirtualBox. Accedim a **Configuració → Emmagatzematge** de la màquina virtual "Windows 11 Pro". Fem clic a la icona per afegir un nou disc dur virtual i seleccionem **Crea un nou disc**.
+Per ampliar l'emmagatzematge de la màquina virtual cal afegir un nou disc des de la configuració de VirtualBox. Accedim a **Configuració → Emmagatzematge** de la màquina virtual "Windows 10 Pro". Fem clic a la icona per afegir un nou disc dur virtual i seleccionem **Crea un nou disc**.
 
-En aquesta captura podem veure que s'ha creat el fitxer `Windows 11 Pro_1.vdi` (el segon disc), amb una mida virtual de **5,00 GB** i format **VDI (Normal)**. Apareix connectat al controlador SATA al port SATA 2, just a sota del disc principal del sistema.
+En aquesta captura podem veure que s'ha creat el fitxer `Projecte 2 SP1_1` (el segon disc), amb una mida virtual de **5,00 GB** i format **VDI (Normal)**. Apareix connectat al controlador SATA al port SATA 2, just a sota del disc principal del sistema.
 
 > 💡 Un disc VDI d'ubicació dinàmica ocupa molt poc espai real al host fins que s'hi escriu informació.
 
@@ -18,7 +18,7 @@ En aquesta captura podem veure que s'ha creat el fitxer `Windows 11 Pro_1.vdi` (
 
 ### Pas 2 – Iniciar Windows i obrir Gestió de discs
 
-Un cop afegit el disc a VirtualBox, iniciem la màquina virtual amb Windows 11. Per gestionar els discs des de Windows, executem `diskmgmt.msc` (o clic dret al menú d'inici → **Gestió de discs**).
+Un cop afegit el disc a VirtualBox, iniciem la màquina virtual amb Windows 10. Per gestionar els discs des de Windows, executem `diskmgmt.msc` (o clic dret al menú d'inici → **Gestió de discs**).
 
 En la captura s'observa que el sistema reconeix el nou **Disc 1** (5 GB) amb tot l'espai **No asignat**. Això confirma que Windows l'ha detectat correctament, però encara no s'ha inicialitzat ni creat cap partició.
 
@@ -197,7 +197,7 @@ La captura mostra clarament com el sistema **nega l'accés** quan l'usuari inten
 
 ### Pas 10 – Afegir tercer disc virtual, formatar-lo en NTFS com a Backups
 
-Des de la configuració de VirtualBox, afegim un **tercer disc** (`Windows 11 Pro_2.vdi`) de 5 GB connectat al port SATA 3. Servirà com a unitat de còpies de seguretat.
+Des de la configuració de VirtualBox, afegim un **tercer disc** (`Projecte 2 SP1_2.vdi`) de 5 GB connectat al port SATA 3. Servirà com a unitat de còpies de seguretat.
 
 <img width="775" height="346" alt="25" src="https://github.com/user-attachments/assets/62919f07-28a9-48ac-8d97-9935b4986c0b" />
 
