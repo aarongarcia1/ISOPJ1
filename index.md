@@ -29,3 +29,4 @@ El contenido está bajo licencia [Creative Commons BY-NC-SA 4.0 ES](LICENSE.md).
 
 ## Projecte 2
 ### [SP1. Sprint 1: Instal·lació i Configuració Inicial](Projecte2/sp1.md)  
+### [Sprint 2 – Windows: Discs, Quotes, Scripts, Processos i ACLs](Projecte2/sp2.md)  
