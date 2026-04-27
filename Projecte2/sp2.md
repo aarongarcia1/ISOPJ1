@@ -288,7 +288,8 @@ Iniciem sessió amb l'usuari **alumne1**. L'script s'executa automàticament a l
 
 La captura del Explorador de Windows confirma que la còpia s'ha realitzat correctament: es veuen totes les carpetes del perfil d'alumne1 (`Contacts`, `Desktop`, `Documents`, `Downloads`, etc.) dins de `B:\CòpiesUsuaris\alumne1\`, amb data del 23/04/2026 a les 13:20.
 
-<img width="1270" height="832" alt="33" src="https://github.com/user-attachments/assets/50e6b55c-463c-4e12-8abe-a67bc28da92f" />
+<img width="695" height="321" alt="image" src="https://github.com/user-attachments/assets/6ad3ba4d-8f48-4803-a0e5-d3b1d7302ea7" />
+
 
 
 ---
